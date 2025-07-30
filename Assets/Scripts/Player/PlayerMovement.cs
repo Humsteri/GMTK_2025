@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement transition")]
     public bool SmoothTransition = false;
     public float TransitionSpeed = 10f;
     public float TransitionRotationSpeed = 500f;
 
+    [Header("Movement amount")]
+    public float MovementFactor = 1f;
+
+    [Header("Raycast settings")]
+    public float CollideRayLength = 2f;
+    [SerializeField] Transform raycastStartPoint;
+    [SerializeField] LayerMask collideLayer;
     Vector3 targetGridPos;
     Vector3 prevTargetGridPos;
     Vector3 targetRotation;
@@ -49,11 +57,40 @@ public class PlayerMovement : MonoBehaviour
             targetGridPos = prevTargetGridPos;
         }
     }
+    bool CollideForward()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(raycastStartPoint.position, transform.TransformDirection(Vector3.forward), out hit, CollideRayLength, collideLayer))
+        {
+            UnityEngine.Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            return true;
+        }
+        else
+        {
+            UnityEngine.Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            return false;
+        }
+    }
+    bool CollideBack()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(raycastStartPoint.position, transform.TransformDirection(Vector3.back), out hit, CollideRayLength, collideLayer))
+        {
+            UnityEngine.Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * hit.distance, Color.yellow);
+            return true;
+        }
+        else
+        {
+            UnityEngine.Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * 1000, Color.white);
+            return false;
+        }
+    }
     void Update()
     {
         if (inputManager.W)
         {
-            MoveForward();
+            if (!CollideForward())
+                MoveForward();
         }
         if (inputManager.A)
         {
@@ -61,7 +98,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (inputManager.S)
         {
-            MoveBackwards();
+            if (!CollideBack())
+                MoveBackwards();
         }
         if (inputManager.D)
         {
@@ -81,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
     public void MoveForward()
     {
         if (!atRest) return;
-        targetGridPos += transform.forward;
+        targetGridPos += transform.forward * MovementFactor;
     }
     public void MoveBackwards()
     {
@@ -91,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Space here done by Noki
         if (!atRest) return;
-        targetGridPos -= transform.forward;
+        targetGridPos -= transform.forward * MovementFactor;
     }
     public void MoveLeft()
     {
