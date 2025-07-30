@@ -12387,7 +12387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fabc9b607566524aad69cf88fa8766d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _worldColor: 0
+  _worldColor: 3
   _redRooms:
   - {fileID: 412463065}
   _greenRooms:
@@ -12397,6 +12397,9 @@ MonoBehaviour:
   _redMaterial: {fileID: 2100000, guid: 456e38bbbac958c4faccdc5ebea0d3ec, type: 2}
   _greenMaterial: {fileID: 2100000, guid: 76bf9fd2ef3c5724fae4555802bc990d, type: 2}
   _blueMaterial: {fileID: 2100000, guid: 6e173cae432cded468b1816979362bbd, type: 2}
+  _redColor: {r: 0.5471698, g: 0.10582057, b: 0.10582057, a: 1}
+  _greenColor: {r: 0.10588236, g: 0.54901963, b: 0.14173552, a: 1}
+  _blueColor: {r: 0.10588236, g: 0.38495567, b: 0.54901963, a: 1}
 --- !u!1 &1164381009
 GameObject:
   m_ObjectHideFlags: 0
