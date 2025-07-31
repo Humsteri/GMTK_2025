@@ -1156,6 +1156,114 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""SymbolPuzzle"",
+            ""id"": ""383fd4b3-90d2-4422-a530-b6deb2e13e68"",
+            ""actions"": [
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""6496bbf9-27fe-4f95-83db-e55c48609fc7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Previous"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b5a05c5-4771-4a62-bcc6-9a1974c38938"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Forward"",
+                    ""type"": ""Button"",
+                    ""id"": ""bd4e9c44-4018-4419-ba9e-88dcb05897a9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Backwards"",
+                    ""type"": ""Button"",
+                    ""id"": ""7d88b70f-4808-475b-ae18-dc9bdc9a5006"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""ed0f1b40-582b-4a56-bd55-72019fc0fe75"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a335b3e8-e013-467b-a346-025b45227816"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Forward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""812d13ed-4fa4-4bce-8758-7d2c51e0da44"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Backwards"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3057228d-01ea-4dcc-b9f4-3d4fcf15526e"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Previous"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb0cbf56-045c-427b-9572-208f89e45baa"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""355df625-38b5-42e2-9975-6e17d0008700"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1248,12 +1356,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // SymbolPuzzle
+        m_SymbolPuzzle = asset.FindActionMap("SymbolPuzzle", throwIfNotFound: true);
+        m_SymbolPuzzle_Next = m_SymbolPuzzle.FindAction("Next", throwIfNotFound: true);
+        m_SymbolPuzzle_Previous = m_SymbolPuzzle.FindAction("Previous", throwIfNotFound: true);
+        m_SymbolPuzzle_Forward = m_SymbolPuzzle.FindAction("Forward", throwIfNotFound: true);
+        m_SymbolPuzzle_Backwards = m_SymbolPuzzle.FindAction("Backwards", throwIfNotFound: true);
+        m_SymbolPuzzle_Confirm = m_SymbolPuzzle.FindAction("Confirm", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputSystem_Actions.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_SymbolPuzzle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.SymbolPuzzle.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1748,6 +1864,146 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
+    // SymbolPuzzle
+    private readonly InputActionMap m_SymbolPuzzle;
+    private List<ISymbolPuzzleActions> m_SymbolPuzzleActionsCallbackInterfaces = new List<ISymbolPuzzleActions>();
+    private readonly InputAction m_SymbolPuzzle_Next;
+    private readonly InputAction m_SymbolPuzzle_Previous;
+    private readonly InputAction m_SymbolPuzzle_Forward;
+    private readonly InputAction m_SymbolPuzzle_Backwards;
+    private readonly InputAction m_SymbolPuzzle_Confirm;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "SymbolPuzzle".
+    /// </summary>
+    public struct SymbolPuzzleActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public SymbolPuzzleActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "SymbolPuzzle/Next".
+        /// </summary>
+        public InputAction @Next => m_Wrapper.m_SymbolPuzzle_Next;
+        /// <summary>
+        /// Provides access to the underlying input action "SymbolPuzzle/Previous".
+        /// </summary>
+        public InputAction @Previous => m_Wrapper.m_SymbolPuzzle_Previous;
+        /// <summary>
+        /// Provides access to the underlying input action "SymbolPuzzle/Forward".
+        /// </summary>
+        public InputAction @Forward => m_Wrapper.m_SymbolPuzzle_Forward;
+        /// <summary>
+        /// Provides access to the underlying input action "SymbolPuzzle/Backwards".
+        /// </summary>
+        public InputAction @Backwards => m_Wrapper.m_SymbolPuzzle_Backwards;
+        /// <summary>
+        /// Provides access to the underlying input action "SymbolPuzzle/Confirm".
+        /// </summary>
+        public InputAction @Confirm => m_Wrapper.m_SymbolPuzzle_Confirm;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_SymbolPuzzle; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="SymbolPuzzleActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(SymbolPuzzleActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="SymbolPuzzleActions" />
+        public void AddCallbacks(ISymbolPuzzleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SymbolPuzzleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SymbolPuzzleActionsCallbackInterfaces.Add(instance);
+            @Next.started += instance.OnNext;
+            @Next.performed += instance.OnNext;
+            @Next.canceled += instance.OnNext;
+            @Previous.started += instance.OnPrevious;
+            @Previous.performed += instance.OnPrevious;
+            @Previous.canceled += instance.OnPrevious;
+            @Forward.started += instance.OnForward;
+            @Forward.performed += instance.OnForward;
+            @Forward.canceled += instance.OnForward;
+            @Backwards.started += instance.OnBackwards;
+            @Backwards.performed += instance.OnBackwards;
+            @Backwards.canceled += instance.OnBackwards;
+            @Confirm.started += instance.OnConfirm;
+            @Confirm.performed += instance.OnConfirm;
+            @Confirm.canceled += instance.OnConfirm;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="SymbolPuzzleActions" />
+        private void UnregisterCallbacks(ISymbolPuzzleActions instance)
+        {
+            @Next.started -= instance.OnNext;
+            @Next.performed -= instance.OnNext;
+            @Next.canceled -= instance.OnNext;
+            @Previous.started -= instance.OnPrevious;
+            @Previous.performed -= instance.OnPrevious;
+            @Previous.canceled -= instance.OnPrevious;
+            @Forward.started -= instance.OnForward;
+            @Forward.performed -= instance.OnForward;
+            @Forward.canceled -= instance.OnForward;
+            @Backwards.started -= instance.OnBackwards;
+            @Backwards.performed -= instance.OnBackwards;
+            @Backwards.canceled -= instance.OnBackwards;
+            @Confirm.started -= instance.OnConfirm;
+            @Confirm.performed -= instance.OnConfirm;
+            @Confirm.canceled -= instance.OnConfirm;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="SymbolPuzzleActions.UnregisterCallbacks(ISymbolPuzzleActions)" />.
+        /// </summary>
+        /// <seealso cref="SymbolPuzzleActions.UnregisterCallbacks(ISymbolPuzzleActions)" />
+        public void RemoveCallbacks(ISymbolPuzzleActions instance)
+        {
+            if (m_Wrapper.m_SymbolPuzzleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="SymbolPuzzleActions.AddCallbacks(ISymbolPuzzleActions)" />
+        /// <seealso cref="SymbolPuzzleActions.RemoveCallbacks(ISymbolPuzzleActions)" />
+        /// <seealso cref="SymbolPuzzleActions.UnregisterCallbacks(ISymbolPuzzleActions)" />
+        public void SetCallbacks(ISymbolPuzzleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SymbolPuzzleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SymbolPuzzleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="SymbolPuzzleActions" /> instance referencing this action map.
+    /// </summary>
+    public SymbolPuzzleActions @SymbolPuzzle => new SymbolPuzzleActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -1989,5 +2245,48 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "SymbolPuzzle" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="SymbolPuzzleActions.AddCallbacks(ISymbolPuzzleActions)" />
+    /// <seealso cref="SymbolPuzzleActions.RemoveCallbacks(ISymbolPuzzleActions)" />
+    public interface ISymbolPuzzleActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Next" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNext(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Previous" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPrevious(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Forward" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnForward(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Backwards" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnBackwards(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Confirm" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnConfirm(InputAction.CallbackContext context);
     }
 }
