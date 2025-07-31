@@ -21,6 +21,11 @@ public class InputManager : MonoBehaviour
     public bool D => InputActions.Player.D?.WasPressedThisFrame() ?? false;
     public bool Interact => InputActions.Player.Interact?.WasPressedThisFrame() ?? false;
 
+    [Header("Dialogue")]
+    public bool DialogueUp => InputActions.Dialogue.MoveUp?.WasPressedThisFrame() ?? false;
+    public bool DialogueDown => InputActions.Dialogue.MoveDown?.WasPressedThisFrame() ?? false;
+    public bool DialogueSelect => InputActions.Dialogue.Select?.WasPressedThisFrame() ?? false;
+
     [Header("Symbol Puzzle")]
     public bool Next => InputActions.SymbolPuzzle.Next?.WasPressedThisFrame() ?? false;
     public bool Previous => InputActions.SymbolPuzzle.Previous?.WasPressedThisFrame() ?? false;
