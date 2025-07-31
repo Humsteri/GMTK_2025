@@ -835,11 +835,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9dbdef5468b37e4e8e482284dc1c875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 860739698}
+  addedFovAmount: 1
+  fovChangeSpeed: 0.2
+  cameraEase: 2
+  cameraPosChangeAmountY: 0.1
+  cameraPosChangeSpeed: 0.3
+  cameraAnimation: 1
+  fovChange: 1
   SmoothTransition: 1
-  TransitionSpeed: 10
+  TransitionSpeed: 15
   TransitionRotationSpeed: 500
-  MovementFactor: 1
-  CollideRayLength: 1
+  MovementFactor: 2
+  CollideRayLength: 2
   raycastStartPoint: {fileID: 693196386}
   collideLayer:
     serializedVersion: 2

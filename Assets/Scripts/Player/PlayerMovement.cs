@@ -1,9 +1,20 @@
-using System.Diagnostics;
-using UnityEditorInternal;
 using UnityEngine;
+using PrimeTween;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Camera")]
+    [SerializeField] Camera mainCamera;
+    [SerializeField] float addedFovAmount;
+    [SerializeField] float fovChangeSpeed;
+    [SerializeField] Ease cameraEase;
+    [SerializeField] float cameraPosChangeAmountY;
+    [SerializeField] float cameraPosChangeSpeed;
+    [SerializeField] bool cameraAnimation;
+    [SerializeField] bool fovChange;
+    float cameraPosY;
+    float cameraFov;
+
     [Header("Movement transition")]
     public bool SmoothTransition = false;
     public float TransitionSpeed = 10f;
@@ -24,7 +35,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         targetGridPos = Vector3Int.RoundToInt(transform.position);
-
+        cameraPosY = mainCamera.transform.position.y;
+        cameraFov = mainCamera.fieldOfView;
     }
     void FixedUpdate()
     {
@@ -45,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.position = _targetPosition;
                 transform.rotation = Quaternion.Euler(targetRotation);
+                
             }
             else
             {
@@ -85,12 +98,34 @@ public class PlayerMovement : MonoBehaviour
             return false;
         }
     }
+    /* Sequence sequence;
+
+    public void PlayCameraAnimation()
+    {
+        if (!sequence.isAlive)
+        {
+            sequence = Tween.PositionY(mainCamera.transform, mainCamera.transform.position.y - cameraPosChangeAmountY, cameraPosY, cameraPosChangeSpeed)
+                .Chain(Tween.PositionY(mainCamera.transform, mainCamera.transform.position.y + cameraPosChangeAmountY, cameraPosY, cameraPosChangeSpeed));
+        }
+    } */
+    public void CameraWalkAnimation()
+    {
+        Tween.PositionY(mainCamera.transform, mainCamera.transform.position.y - cameraPosChangeAmountY, cameraPosY, cameraPosChangeSpeed);
+    }
     void Update()
     {
         if (inputManager.W)
         {
             if (!CollideForward())
+            {
                 MoveForward();
+                
+                if (cameraAnimation)
+                    CameraWalkAnimation();
+                mainCamera.fieldOfView = cameraFov;
+                if(fovChange)
+                    Tween.CameraFieldOfView(mainCamera, mainCamera.fieldOfView + addedFovAmount, cameraFov, fovChangeSpeed, cameraEase);
+            }
         }
         if (inputManager.A)
         {
