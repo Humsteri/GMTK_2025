@@ -1,5 +1,6 @@
 using UnityEngine;
 using PrimeTween;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         targetGridPos = Vector3Int.RoundToInt(transform.position);
         cameraPosY = mainCamera.transform.position.y;
         cameraFov = mainCamera.fieldOfView;
+        
     }
     void FixedUpdate()
     {

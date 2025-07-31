@@ -13,5 +13,8 @@ public class ActionNotifier : MonoBehaviour
             Instance = this;
     }
     #endregion
-    
+
+    public Action JapMaster;
+    public Action<Enums.Items> Item;
+    public Action<Enums.Puzzles> Puzzle;
 }
