@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
             if (!CollideForward())
             {
                 MoveForward();
-                
+                AudioManager.Instance.PlayFootStep(transform.position);
                 if (cameraAnimation)
                     CameraWalkAnimation();
                 mainCamera.fieldOfView = cameraFov;
@@ -132,15 +132,20 @@ public class PlayerMovement : MonoBehaviour
         if (inputManager.A)
         {
             RotateLeft();
+            AudioManager.Instance.PlayTurn(transform.position);
         }
         if (inputManager.S)
         {
             if (!CollideBack())
+            {
                 MoveBackwards();
+                AudioManager.Instance.PlayFootStep(transform.position);
+            }
         }
         if (inputManager.D)
         {
             RotateRight();
+            AudioManager.Instance.PlayTurn(transform.position);
         }
     }
     public void RotateLeft()

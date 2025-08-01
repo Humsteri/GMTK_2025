@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
 
     AudioSource audioSource => GetComponent<AudioSource>();
     [SerializeField] AudioClip bassSound;
+    [SerializeField] AudioClip footStep;
+    [SerializeField] AudioClip turn;
     [SerializeField] float maxPitchChange;
     [SerializeField] float minPitchChange;
     public void PlaySound()
@@ -34,5 +36,13 @@ public class AudioManager : MonoBehaviour
         {
             audioSource.Stop();
         }
+    }
+    public void PlayFootStep(Vector3 pos)
+    {
+        AudioSource.PlayClipAtPoint(footStep, pos);
+    }
+    public void PlayTurn(Vector3 pos)
+    {
+        AudioSource.PlayClipAtPoint(turn, pos, 0.3f);
     }
 }
