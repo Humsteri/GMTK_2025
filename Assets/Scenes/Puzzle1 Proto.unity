@@ -1758,6 +1758,7 @@ MonoBehaviour:
   OpenPuzzleBool: 0
   ClosePuzzleBool: 0
   _puzzleObject: {fileID: 797985760}
+  Completed: 0
   _components:
   - {fileID: 1447172688}
   - {fileID: 39963722}
@@ -1768,6 +1769,10 @@ MonoBehaviour:
   _firstApparatusSymbol: 0
   _secondApparatusSymbol: 0
   _thirdApparatusSymbol: 0
+  _ButtonIndex: 0
+  _firstApparatusAnswer: 1
+  _secondApparatusAsnwer: 2
+  _thirdApparatusAnswer: 3
 --- !u!1 &1089715487
 GameObject:
   m_ObjectHideFlags: 0
