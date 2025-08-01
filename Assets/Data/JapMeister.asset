@@ -13,5 +13,23 @@ MonoBehaviour:
   m_Name: JapMeister
   m_EditorClassIdentifier: 
   RootNode:
-    DialogueText: 
-    Responses: []
+    DialogueText:
+    - Nyt
+    - meet
+    - tekee
+    - sen
+    - 'vitun '
+    - puzzlen
+    Responses:
+    - responseText: No vittu en
+      nextNode:
+        DialogueText:
+        - No ei sitte
+        - :(
+        Responses: []
+    - responseText: Asia kunnossa
+      nextNode:
+        DialogueText:
+        - :)
+        - "Hyv\xE4"
+        Responses: []

@@ -36,8 +36,18 @@ public class InputManager : MonoBehaviour
     {
         InputActions.Player.Enable();
     }
-
-    public void EnableSymbolInputs() {
+    public void EnableDialogue()
+    {
+        InputActions.Player.Disable();
+        InputActions.Dialogue.Enable();
+    }
+    public void DisableDialogue()
+    {
+        InputActions.Player.Enable();
+        InputActions.Dialogue.Disable();
+    }
+    public void EnableSymbolInputs()
+    {
         InputActions.SymbolPuzzle.Enable();
     }
 
