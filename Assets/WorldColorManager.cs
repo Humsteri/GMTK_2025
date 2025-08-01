@@ -19,7 +19,6 @@ public class WorldColorManager : MonoBehaviour
 
     [Header("Post Processing")]
     [SerializeField] VolumeProfile _volume;
-    [SerializeField] VolumeParameter<float> _hueShift = new();
     [SerializeField] VolumeParameter<Color> _colorFilter = new();
     ColorAdjustments _colorAdjust;
 
@@ -27,13 +26,14 @@ public class WorldColorManager : MonoBehaviour
     [ColorUsage(true, true)]
     [SerializeField] Color _white;
     [ColorUsage(true, true)]
-    [SerializeField] Color _rgbbq;
+    [SerializeField] Color _red;
+    [ColorUsage(true, true)]
+    [SerializeField] Color _green;
+    [ColorUsage(true, true)]
+    [SerializeField] Color _blue;
+    [ColorUsage(true, true)]
+    [SerializeField] Color _black;
 
-    [Header("Hue Shift Values")]
-    [SerializeField] float _redColor;
-    [SerializeField] float _blueColor;
-    [SerializeField] float _greenColor;
-    [SerializeField] float _whiteColor;
 
     private void OnValidate() {
         if (_colorAdjust == null) { return; }
@@ -61,30 +61,24 @@ public class WorldColorManager : MonoBehaviour
     void ChangeWorldColor(WorldColor color) {
         switch (color) {
             case WorldColor.Red:
-                _hueShift.value = _redColor;
-                _colorFilter.value = _rgbbq;
+                _colorFilter.value = _red;
                 break;
             case WorldColor.Green:
-                _hueShift.value = _greenColor;
-                _colorFilter.value = _rgbbq;
+                _colorFilter.value = _green;
                 break;
             case WorldColor.Blue:
-                _hueShift.value = _blueColor;
-                _colorFilter.value = _rgbbq;
+                _colorFilter.value = _blue;
                 break;
             case WorldColor.All:
-                _hueShift.value = _whiteColor;
                 _colorFilter.value = _white;
                 break;
             case WorldColor.None:
-                _hueShift.value = _whiteColor;
-                _colorFilter.value = _white;
+                _colorFilter.value = _black;
                 break;
             default:
                 Debug.LogError("Something fuked");
                 break;
         }
         _colorAdjust.colorFilter.SetValue(_colorFilter);
-        _colorAdjust.hueShift.SetValue(_hueShift);
     }
 }
