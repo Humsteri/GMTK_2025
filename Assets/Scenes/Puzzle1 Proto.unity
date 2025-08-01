@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 39963721}
   - component: {fileID: 39963720}
   m_Layer: 5
-  m_Name: Apparatus 1 (1)
+  m_Name: Apparatus 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1765,6 +1765,9 @@ MonoBehaviour:
   - {fileID: 1538721652}
   _selectedComponent: {fileID: 0}
   _apparatusIndex: 0
+  _firstApparatusSymbol: 0
+  _secondApparatusSymbol: 0
+  _thirdApparatusSymbol: 0
 --- !u!1 &1089715487
 GameObject:
   m_ObjectHideFlags: 0
@@ -3815,7 +3818,7 @@ GameObject:
   - component: {fileID: 2021643177}
   - component: {fileID: 2021643176}
   m_Layer: 5
-  m_Name: Apparatus 1 (2)
+  m_Name: Apparatus 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

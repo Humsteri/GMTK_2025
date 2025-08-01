@@ -1109,7 +1109,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             ""id"": ""383fd4b3-90d2-4422-a530-b6deb2e13e68"",
             ""actions"": [
                 {
-                    ""name"": ""Next"",
+                    ""name"": ""Forward"",
                     ""type"": ""Button"",
                     ""id"": ""6496bbf9-27fe-4f95-83db-e55c48609fc7"",
                     ""expectedControlType"": """",
@@ -1118,7 +1118,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Previous"",
+                    ""name"": ""Backwards"",
                     ""type"": ""Button"",
                     ""id"": ""2b5a05c5-4771-4a62-bcc6-9a1974c38938"",
                     ""expectedControlType"": """",
@@ -1127,7 +1127,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Forward"",
+                    ""name"": ""Next"",
                     ""type"": ""Button"",
                     ""id"": ""bd4e9c44-4018-4419-ba9e-88dcb05897a9"",
                     ""expectedControlType"": """",
@@ -1136,7 +1136,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Backwards"",
+                    ""name"": ""Previous"",
                     ""type"": ""Button"",
                     ""id"": ""7d88b70f-4808-475b-ae18-dc9bdc9a5006"",
                     ""expectedControlType"": """",
@@ -1158,22 +1158,22 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a335b3e8-e013-467b-a346-025b45227816"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Forward"",
+                    ""action"": ""Next"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""812d13ed-4fa4-4bce-8758-7d2c51e0da44"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Backwards"",
+                    ""action"": ""Previous"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1184,7 +1184,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Previous"",
+                    ""action"": ""Backwards"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1195,7 +1195,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Next"",
+                    ""action"": ""Forward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1372,10 +1372,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         // SymbolPuzzle
         m_SymbolPuzzle = asset.FindActionMap("SymbolPuzzle", throwIfNotFound: true);
-        m_SymbolPuzzle_Next = m_SymbolPuzzle.FindAction("Next", throwIfNotFound: true);
-        m_SymbolPuzzle_Previous = m_SymbolPuzzle.FindAction("Previous", throwIfNotFound: true);
         m_SymbolPuzzle_Forward = m_SymbolPuzzle.FindAction("Forward", throwIfNotFound: true);
         m_SymbolPuzzle_Backwards = m_SymbolPuzzle.FindAction("Backwards", throwIfNotFound: true);
+        m_SymbolPuzzle_Next = m_SymbolPuzzle.FindAction("Next", throwIfNotFound: true);
+        m_SymbolPuzzle_Previous = m_SymbolPuzzle.FindAction("Previous", throwIfNotFound: true);
         m_SymbolPuzzle_Confirm = m_SymbolPuzzle.FindAction("Confirm", throwIfNotFound: true);
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
@@ -1877,10 +1877,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     // SymbolPuzzle
     private readonly InputActionMap m_SymbolPuzzle;
     private List<ISymbolPuzzleActions> m_SymbolPuzzleActionsCallbackInterfaces = new List<ISymbolPuzzleActions>();
-    private readonly InputAction m_SymbolPuzzle_Next;
-    private readonly InputAction m_SymbolPuzzle_Previous;
     private readonly InputAction m_SymbolPuzzle_Forward;
     private readonly InputAction m_SymbolPuzzle_Backwards;
+    private readonly InputAction m_SymbolPuzzle_Next;
+    private readonly InputAction m_SymbolPuzzle_Previous;
     private readonly InputAction m_SymbolPuzzle_Confirm;
     /// <summary>
     /// Provides access to input actions defined in input action map "SymbolPuzzle".
@@ -1894,14 +1894,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public SymbolPuzzleActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "SymbolPuzzle/Next".
-        /// </summary>
-        public InputAction @Next => m_Wrapper.m_SymbolPuzzle_Next;
-        /// <summary>
-        /// Provides access to the underlying input action "SymbolPuzzle/Previous".
-        /// </summary>
-        public InputAction @Previous => m_Wrapper.m_SymbolPuzzle_Previous;
-        /// <summary>
         /// Provides access to the underlying input action "SymbolPuzzle/Forward".
         /// </summary>
         public InputAction @Forward => m_Wrapper.m_SymbolPuzzle_Forward;
@@ -1909,6 +1901,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "SymbolPuzzle/Backwards".
         /// </summary>
         public InputAction @Backwards => m_Wrapper.m_SymbolPuzzle_Backwards;
+        /// <summary>
+        /// Provides access to the underlying input action "SymbolPuzzle/Next".
+        /// </summary>
+        public InputAction @Next => m_Wrapper.m_SymbolPuzzle_Next;
+        /// <summary>
+        /// Provides access to the underlying input action "SymbolPuzzle/Previous".
+        /// </summary>
+        public InputAction @Previous => m_Wrapper.m_SymbolPuzzle_Previous;
         /// <summary>
         /// Provides access to the underlying input action "SymbolPuzzle/Confirm".
         /// </summary>
@@ -1939,18 +1939,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_SymbolPuzzleActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_SymbolPuzzleActionsCallbackInterfaces.Add(instance);
-            @Next.started += instance.OnNext;
-            @Next.performed += instance.OnNext;
-            @Next.canceled += instance.OnNext;
-            @Previous.started += instance.OnPrevious;
-            @Previous.performed += instance.OnPrevious;
-            @Previous.canceled += instance.OnPrevious;
             @Forward.started += instance.OnForward;
             @Forward.performed += instance.OnForward;
             @Forward.canceled += instance.OnForward;
             @Backwards.started += instance.OnBackwards;
             @Backwards.performed += instance.OnBackwards;
             @Backwards.canceled += instance.OnBackwards;
+            @Next.started += instance.OnNext;
+            @Next.performed += instance.OnNext;
+            @Next.canceled += instance.OnNext;
+            @Previous.started += instance.OnPrevious;
+            @Previous.performed += instance.OnPrevious;
+            @Previous.canceled += instance.OnPrevious;
             @Confirm.started += instance.OnConfirm;
             @Confirm.performed += instance.OnConfirm;
             @Confirm.canceled += instance.OnConfirm;
@@ -1965,18 +1965,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="SymbolPuzzleActions" />
         private void UnregisterCallbacks(ISymbolPuzzleActions instance)
         {
-            @Next.started -= instance.OnNext;
-            @Next.performed -= instance.OnNext;
-            @Next.canceled -= instance.OnNext;
-            @Previous.started -= instance.OnPrevious;
-            @Previous.performed -= instance.OnPrevious;
-            @Previous.canceled -= instance.OnPrevious;
             @Forward.started -= instance.OnForward;
             @Forward.performed -= instance.OnForward;
             @Forward.canceled -= instance.OnForward;
             @Backwards.started -= instance.OnBackwards;
             @Backwards.performed -= instance.OnBackwards;
             @Backwards.canceled -= instance.OnBackwards;
+            @Next.started -= instance.OnNext;
+            @Next.performed -= instance.OnNext;
+            @Next.canceled -= instance.OnNext;
+            @Previous.started -= instance.OnPrevious;
+            @Previous.performed -= instance.OnPrevious;
+            @Previous.canceled -= instance.OnPrevious;
             @Confirm.started -= instance.OnConfirm;
             @Confirm.performed -= instance.OnConfirm;
             @Confirm.canceled -= instance.OnConfirm;
@@ -2374,20 +2374,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     public interface ISymbolPuzzleActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Next" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNext(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Previous" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnPrevious(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "Forward" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -2401,6 +2387,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBackwards(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Next" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNext(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Previous" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPrevious(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Confirm" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

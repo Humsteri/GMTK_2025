@@ -15,6 +15,12 @@ public class SymbolPuzzle : MonoBehaviour
     [SerializeField] SymbolPuzzleComponents _selectedComponent;
     [SerializeField] int _apparatusIndex = 0;
 
+    [Header("SelectedSymbols")]
+    [SerializeField] int _firstApparatusSymbol;
+    [SerializeField] int _secondApparatusSymbol;
+    [SerializeField] int _thirdApparatusSymbol;
+    [SerializeField] int _ButtonIndex;
+
     private void Start() {
         ClosePuzzle();
         OpenPuzzle();
@@ -30,17 +36,22 @@ public class SymbolPuzzle : MonoBehaviour
             ClosePuzzle();
         }
 
-        if (InputManager.Instance.Backwards) {
+        if (InputManager.Instance.Next) {
             NextApparatus();
         }
-        if (InputManager.Instance.Forward) {
+        if (InputManager.Instance.Previous) {
             PreviousApparatus();
         }
-        if (InputManager.Instance.Next) {
+        if (InputManager.Instance.Forward) {
             _selectedComponent.Forward();
+            GetApparatusSymbolIndex(_selectedComponent);
         }
-        if (InputManager.Instance.Previous) {
+        if (InputManager.Instance.Backwards) {
             _selectedComponent.Backward();
+            GetApparatusSymbolIndex(_selectedComponent);
+        }
+        if (InputManager.Instance.Confirm) {
+            
         }
     }
 
@@ -82,5 +93,23 @@ public class SymbolPuzzle : MonoBehaviour
         }
         _components[index].Select();
         _selectedComponent = _components[index];
+    }
+
+    void GetApparatusSymbolIndex(SymbolPuzzleComponents apparatus) {
+        int index = _components.IndexOf(apparatus);
+        switch (index) {
+            case 0:
+                _firstApparatusSymbol = _components[index].SymbolIndex;
+            break;
+            case 1:
+                _secondApparatusSymbol = _components[index].SymbolIndex;
+            break;
+            case 2:
+                _thirdApparatusSymbol = _components[index].SymbolIndex;
+            break;
+            case 3:
+                _ButtonIndex = _components[index].SymbolIndex;
+            break;
+        }
     }
 }
