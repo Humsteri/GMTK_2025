@@ -18,5 +18,6 @@ public enum WorldColor
     Red,
     Green,
     Blue,
-    All
+    All,
+    None
 }

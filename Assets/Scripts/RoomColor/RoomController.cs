@@ -67,19 +67,19 @@ public class RoomController : MonoBehaviour
     void EnableRedRooms() {
         _redMaterial.color = _redColor;
         foreach (var room in _redRooms) {
-            room.EnableObjects();
+            room.EnableLights();
         }
     }
     void EnableGreenRooms() {
         _greenMaterial.color = _greenColor;
         foreach (var room in _greenRooms) {
-            room.EnableObjects();
+            room.EnableLights();
         }
     }
     void EnableBlueRooms() {
         _blueMaterial.color = _blueColor;
         foreach (var room in _blueRooms) {
-            room.EnableObjects();
+            room.EnableLights();
         }
     }
     void DisableAllRooms() {
@@ -87,13 +87,13 @@ public class RoomController : MonoBehaviour
         _greenMaterial.color = _disabledColor;
         _blueMaterial.color = _disabledColor;
         foreach (var room in _redRooms) {
-            room.DisableObjects();
+            room.DisableLights();
         }
         foreach (var room in _greenRooms) {
-            room.DisableObjects();
+            room.DisableLights();
         }
         foreach (var room in _blueRooms) {
-            room.DisableObjects();
+            room.DisableLights();
         }
     }
 
