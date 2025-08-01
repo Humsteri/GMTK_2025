@@ -9,6 +9,7 @@ public class SymbolPuzzle : MonoBehaviour
 
     [Header("Puzzle")]
     [SerializeField] GameObject _puzzleObject;
+    public bool Completed = false;
 
     [Header("Apparatuses")]
     [SerializeField] List<SymbolPuzzleComponents> _components = new();
@@ -20,6 +21,11 @@ public class SymbolPuzzle : MonoBehaviour
     [SerializeField] int _secondApparatusSymbol;
     [SerializeField] int _thirdApparatusSymbol;
     [SerializeField] int _ButtonIndex;
+
+    [Header("Answer")]
+    [SerializeField] int _firstApparatusAnswer;
+    [SerializeField] int _secondApparatusAsnwer;
+    [SerializeField] int _thirdApparatusAnswer;
 
     private void Start() {
         ClosePuzzle();
@@ -51,11 +57,19 @@ public class SymbolPuzzle : MonoBehaviour
             GetApparatusSymbolIndex(_selectedComponent);
         }
         if (InputManager.Instance.Confirm) {
-            
+            if (_apparatusIndex == 3) { // 3 == Buttons
+                if (_ButtonIndex == 0) { // 0 == Confirmation Button
+                    SubmitAnswer();
+                }
+                else if (_ButtonIndex == 1) { // 1 == Cancel Button
+                    ClosePuzzle();
+                }
+            }
         }
     }
 
     public void OpenPuzzle() {
+        if (Completed) { return; }
         InputManager.Instance.EnableSymbolInputs();
         _puzzleObject.SetActive(true);
         _apparatusIndex = 0;
@@ -111,5 +125,20 @@ public class SymbolPuzzle : MonoBehaviour
                 _ButtonIndex = _components[index].SymbolIndex;
             break;
         }
+    }
+
+    void SubmitAnswer() {
+        if (_firstApparatusSymbol == _firstApparatusAnswer && 
+            _secondApparatusSymbol == _secondApparatusAsnwer && 
+            _thirdApparatusSymbol == _thirdApparatusAnswer) 
+        {
+            print("Answer Was Correct");
+            Completed = true;
+            ClosePuzzle();
+        }
+        else { 
+            print("Answer Was Incorrect");
+        }
+
     }
 }

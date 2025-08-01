@@ -10,12 +10,10 @@ public class SymbolPuzzleApparatus : SymbolPuzzleComponents
 
     public override void Forward() {
         base.Forward();
-        print("Going Forward In Apparatus");
     }
 
     public override void Backward() {
         base.Backward();
-        print("Going Backwards In Apparatus");
     }
 
     protected override void SelectSymbol(int index) {

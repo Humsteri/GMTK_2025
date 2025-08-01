@@ -17,12 +17,10 @@ public class SymbolPuzzleButtons : SymbolPuzzleComponents
 
     public override void Forward() {
         base.Forward();
-        print("Going Forward In Button");
     }
 
     public override void Backward() {
         base.Backward();
-        print("Going Backwards In Button");
     }
 
     public override void Select() {
