@@ -120,8 +120,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": -288.0000305175781,
-            "y": 88.99998474121094
+            "x": -288.0,
+            "y": 89.0
         },
         "m_Blocks": [
             {
@@ -424,7 +424,7 @@
     "m_ZTestMode": 4,
     "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
-    "m_RenderFace": 0,
+    "m_RenderFace": 2,
     "m_AlphaClip": true,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
