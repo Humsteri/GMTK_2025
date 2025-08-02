@@ -18,4 +18,5 @@ public class ActionNotifier : MonoBehaviour
     public Action<Enums.Items> Item;
     public Action<Enums.Puzzles> Puzzle;
     public Action<WorldColor> WorldColor;
+    public Action<bool> SymbolPuzzleStatus;
 }

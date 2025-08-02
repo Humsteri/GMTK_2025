@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4148836583811006475}
   - component: {fileID: 2001020176138700673}
   - component: {fileID: 4004546147560668256}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4769576825813765646}
   - component: {fileID: 6487183902960466125}
   - component: {fileID: 7342197963530152041}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,16 +133,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 451940332, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 6582917074699692559}
   - component: {fileID: 794716318897401796}
   - component: {fileID: 1084757236971443017}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,16 +208,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1249520192, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 84035803075031318}
   - component: {fileID: 6326004564296271371}
   - component: {fileID: 2553027137235194589}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbols
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,9 +262,9 @@ RectTransform:
   - {fileID: 2155850535431452175}
   m_Father: {fileID: 7988007252012890230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -250}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6326004564296271371
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 3925274809491286269}
   - component: {fileID: 4570158854217224423}
   - component: {fileID: 6753279671073317086}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 4366090800447155332}
   - component: {fileID: 6212462859527609311}
   - component: {fileID: 4981235183980283886}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Apparatus 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 9053656805326911305}
   - component: {fileID: 1588782680419521406}
   - component: {fileID: 5666995946769212651}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +565,7 @@ GameObject:
   - component: {fileID: 1466196946771352206}
   - component: {fileID: 7002740198898226176}
   - component: {fileID: 753490120831324527}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Apparatus 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 7589491335009544068}
   - component: {fileID: 1507894442188692373}
   - component: {fileID: 8791099698642567258}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,16 +709,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16269541, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -529270002, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 2283851550387196170}
   - component: {fileID: 1651140136444137403}
   - component: {fileID: 3094836005751263526}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,16 +784,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.81019783, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1674825310, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -812,7 +812,7 @@ GameObject:
   - component: {fileID: 2770976054484149902}
   - component: {fileID: 3184045289099217550}
   - component: {fileID: 1194140103370581202}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 8992514651019228484}
   - component: {fileID: 8459948702477447054}
   - component: {fileID: 1151574477060241228}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -934,16 +934,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.16121197, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1721732503, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 1245177495797250774}
   - component: {fileID: 6919374899973279734}
   - component: {fileID: 852135101708199802}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,16 +1009,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 451940332, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 590927220472798732}
   - component: {fileID: 1727484517525245377}
   - component: {fileID: 981038303027946786}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1084,16 +1084,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1249520192, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 7457396612376524152}
   - component: {fileID: 7174044439855311784}
   - component: {fileID: 32057657476717958}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1159,16 +1159,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1249520192, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1186,7 +1186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1974758585087099260}
   - component: {fileID: 4031797642914425924}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1209,9 +1209,9 @@ RectTransform:
   - {fileID: 2770976054484149902}
   m_Father: {fileID: 3754837295841902630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -190}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4031797642914425924
@@ -1233,7 +1233,7 @@ GameObject:
   - component: {fileID: 232199667576024165}
   - component: {fileID: 5382997420257443816}
   - component: {fileID: 7005139347974844248}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1309,7 +1309,7 @@ GameObject:
   - component: {fileID: 4158536838306810296}
   - component: {fileID: 5959243966456908816}
   - component: {fileID: 8001515750636611326}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Confimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1403,7 +1403,7 @@ GameObject:
   - component: {fileID: 6145077887091013474}
   - component: {fileID: 3774989608402021529}
   - component: {fileID: 2821143597697582406}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1450,16 +1450,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16269541, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -529270002, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1478,7 +1478,7 @@ GameObject:
   - component: {fileID: 4684696949447991673}
   - component: {fileID: 2593598098878291344}
   - component: {fileID: 7423553097278625861}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,7 +1553,7 @@ GameObject:
   - component: {fileID: 8179973465364202050}
   - component: {fileID: 6189133659839836881}
   - component: {fileID: 8584657699753979269}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Puzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1610,7 +1610,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -1180607275, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1630,7 +1630,7 @@ GameObject:
   - component: {fileID: 7211665917571263912}
   - component: {fileID: 2016938892238825523}
   - component: {fileID: 4510389128217618517}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Apparatus 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1726,7 +1726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3158489361431073593}
   - component: {fileID: 5065283764964820109}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1749,9 +1749,9 @@ RectTransform:
   - {fileID: 2344569275557718852}
   m_Father: {fileID: 2034505237335728971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -115}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5065283764964820109
@@ -1772,7 +1772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2763803600245495216}
   - component: {fileID: 4870245239721256357}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbols
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1839,7 +1839,7 @@ GameObject:
   - component: {fileID: 5008428406517377891}
   - component: {fileID: 3571048152614266347}
   - component: {fileID: 3257135200529889091}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1886,16 +1886,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.16121197, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1721732503, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1913,7 +1913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6563390125033851695}
   - component: {fileID: 6597060511496618844}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1936,9 +1936,9 @@ RectTransform:
   - {fileID: 1061521929298706461}
   m_Father: {fileID: 7988007252012890230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -115}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6597060511496618844
@@ -1960,7 +1960,7 @@ GameObject:
   - component: {fileID: 3538704989475897928}
   - component: {fileID: 2766291167530951265}
   - component: {fileID: 4628916118566527906}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2035,7 +2035,7 @@ GameObject:
   - component: {fileID: 4030014215565109903}
   - component: {fileID: 6549003957598103070}
   - component: {fileID: 7032050592301653614}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2110,7 +2110,7 @@ GameObject:
   - component: {fileID: 4542284969592000754}
   - component: {fileID: 3951025670309754619}
   - component: {fileID: 2143214616807509523}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2185,7 +2185,7 @@ GameObject:
   - component: {fileID: 1570850082429053411}
   - component: {fileID: 122639542527371540}
   - component: {fileID: 7801104683703232442}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2232,16 +2232,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.81019783, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1674825310, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2259,7 +2259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5017244016476532107}
   - component: {fileID: 2058404988259499277}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Confirm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2282,9 +2282,9 @@ RectTransform:
   - {fileID: 4684696949447991673}
   m_Father: {fileID: 3754837295841902630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -310}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2058404988259499277
@@ -2306,7 +2306,7 @@ GameObject:
   - component: {fileID: 4442138269624257343}
   - component: {fileID: 4900545280827235610}
   - component: {fileID: 7885921600615781320}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2381,7 +2381,7 @@ GameObject:
   - component: {fileID: 2344569275557718852}
   - component: {fileID: 1949868266874373384}
   - component: {fileID: 8148569578070326838}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2458,7 +2458,7 @@ GameObject:
   - component: {fileID: 5791269056082935678}
   - component: {fileID: 3997217740506578032}
   - component: {fileID: 9076931915808104115}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: SymbolPuzzleCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2576,8 +2576,9 @@ MonoBehaviour:
   _thirdApparatusSymbol: 0
   _ButtonIndex: 0
   _firstApparatusAnswer: 1
-  _secondApparatusAsnwer: 2
-  _thirdApparatusAnswer: 3
+  _secondApparatusAsnwer: 1
+  _thirdApparatusAnswer: 1
+  _audioClip: {fileID: 8300000, guid: f2b4504e129cb7f4badd5d0387233094, type: 3}
 --- !u!1 &6214122124185619046
 GameObject:
   m_ObjectHideFlags: 0
@@ -2589,7 +2590,7 @@ GameObject:
   - component: {fileID: 993538890069477301}
   - component: {fileID: 8382498408094617845}
   - component: {fileID: 853723140441062221}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2636,16 +2637,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 451940332, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2664,7 +2665,7 @@ GameObject:
   - component: {fileID: 5558153440304631431}
   - component: {fileID: 7807307749828922024}
   - component: {fileID: 4717059890705297253}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbols
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2690,9 +2691,9 @@ RectTransform:
   - {fileID: 5008428406517377891}
   m_Father: {fileID: 2034505237335728971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -250}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7807307749828922024
@@ -2743,7 +2744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4810798758115965300}
   - component: {fileID: 635889592808314252}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviousButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2766,9 +2767,9 @@ RectTransform:
   - {fileID: 938628720841118193}
   m_Father: {fileID: 7988007252012890230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -385}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &635889592808314252
@@ -2790,7 +2791,7 @@ GameObject:
   - component: {fileID: 1061521929298706461}
   - component: {fileID: 5922849674839457726}
   - component: {fileID: 6520325153447614868}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2865,7 +2866,7 @@ GameObject:
   - component: {fileID: 2272249542434413783}
   - component: {fileID: 8059381880466074905}
   - component: {fileID: 8395617630164778467}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2912,16 +2913,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.81019783, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1674825310, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2940,7 +2941,7 @@ GameObject:
   - component: {fileID: 2155850535431452175}
   - component: {fileID: 2646078010649533608}
   - component: {fileID: 2731371714049280231}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2987,16 +2988,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.16121197, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1721732503, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3015,7 +3016,7 @@ GameObject:
   - component: {fileID: 2037947536296515338}
   - component: {fileID: 5417414453562492249}
   - component: {fileID: 8416847061534347802}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3090,7 +3091,7 @@ GameObject:
   - component: {fileID: 121407591140148786}
   - component: {fileID: 3435119089166842123}
   - component: {fileID: 8447609896029087922}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3164,7 +3165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4353542384268435546}
   - component: {fileID: 7793437815639338154}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviousButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3187,9 +3188,9 @@ RectTransform:
   - {fileID: 4542284969592000754}
   m_Father: {fileID: 2034505237335728971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -385}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7793437815639338154
@@ -3211,7 +3212,7 @@ GameObject:
   - component: {fileID: 1384953236911700287}
   - component: {fileID: 7051094634576027483}
   - component: {fileID: 7693769768432529777}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3286,7 +3287,7 @@ GameObject:
   - component: {fileID: 1394764023040569927}
   - component: {fileID: 4174945679723555583}
   - component: {fileID: 2232486716841654917}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbols
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3312,9 +3313,9 @@ RectTransform:
   - {fileID: 8992514651019228484}
   m_Father: {fileID: 2888492630470589196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -250}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4174945679723555583
@@ -3366,7 +3367,7 @@ GameObject:
   - component: {fileID: 938628720841118193}
   - component: {fileID: 1061949502988393054}
   - component: {fileID: 8599234274113155136}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3440,7 +3441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7490878676907517072}
   - component: {fileID: 4983212077906997961}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3463,9 +3464,9 @@ RectTransform:
   - {fileID: 3538704989475897928}
   m_Father: {fileID: 2888492630470589196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -115}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4983212077906997961
@@ -3487,7 +3488,7 @@ GameObject:
   - component: {fileID: 6012591127780181295}
   - component: {fileID: 4509513680842392878}
   - component: {fileID: 4311147534945146431}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Symbol 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3534,16 +3535,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16269541, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.029145172, g: 0.6792453, b: 0.022427924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -529270002, guid: eacedfbcee4eeae4e9b7f671545f50bd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3561,7 +3562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 754880759407663257}
   - component: {fileID: 338271281778034442}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: PreviousButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3584,9 +3585,9 @@ RectTransform:
   - {fileID: 232199667576024165}
   m_Father: {fileID: 2888492630470589196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -385}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &338271281778034442

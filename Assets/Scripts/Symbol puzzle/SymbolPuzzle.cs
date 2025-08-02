@@ -27,6 +27,9 @@ public class SymbolPuzzle : MonoBehaviour
     [SerializeField] int _secondApparatusAsnwer;
     [SerializeField] int _thirdApparatusAnswer;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip _audioClip;
+
     private void Update() {
         if (OpenPuzzleBool) {
             OpenPuzzleBool = false;
@@ -44,14 +47,22 @@ public class SymbolPuzzle : MonoBehaviour
             PreviousApparatus();
         }
         if (InputManager.Instance.SymbolForward) {
+            if (_apparatusIndex != 3) {
+                AudioSource.PlayClipAtPoint(_audioClip, Camera.main.transform.position);
+            }
             _selectedComponent.Forward();
             GetApparatusSymbolIndex(_selectedComponent);
         }
         if (InputManager.Instance.SymbolBackwards) {
+            if (_apparatusIndex != 3) {
+                AudioSource.PlayClipAtPoint(_audioClip, Camera.main.transform.position);
+                
+            }
             _selectedComponent.Backward();
             GetApparatusSymbolIndex(_selectedComponent);
         }
         if (InputManager.Instance.SymbolConfirm) {
+            AudioSource.PlayClipAtPoint(_audioClip, Camera.main.transform.position);
             if (_apparatusIndex == 3) { // 3 == Buttons
                 if (_ButtonIndex == 0) { // 0 == Confirmation Button
                     SubmitAnswer();
@@ -69,6 +80,9 @@ public class SymbolPuzzle : MonoBehaviour
         _puzzleObject.SetActive(true);
         _apparatusIndex = 0;
         SelectApparatus(_apparatusIndex);
+        foreach (var component in _components) {
+            GetApparatusSymbolIndex(component);
+        }
     }
 
     public void ClosePuzzle() {
@@ -127,7 +141,7 @@ public class SymbolPuzzle : MonoBehaviour
             _secondApparatusSymbol == _secondApparatusAsnwer && 
             _thirdApparatusSymbol == _thirdApparatusAnswer) 
         {
-            print("Answer Was Correct");
+            ActionNotifier.Instance.SymbolPuzzleStatus?.Invoke(true);
             Completed = true;
             ClosePuzzle();
         }
