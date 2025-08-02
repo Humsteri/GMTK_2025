@@ -40,6 +40,7 @@ public class DialogueManager : MonoBehaviour
     public PauseInfo PauseInfo;
     Coroutine produceTextCoroutine;
     AudioManager audioManager => AudioManager.Instance;
+    NPC currentNpc;
     void Start()
     {
         ActionNotifier.Instance.NpcInteract += InteractedWithNpc;
@@ -49,9 +50,10 @@ public class DialogueManager : MonoBehaviour
     {
         ActionNotifier.Instance.NpcInteract -= InteractedWithNpc;
     }
-    private void InteractedWithNpc(Dialogue npcdialogueNode, string npcName)
+    private void InteractedWithNpc(Dialogue npcdialogueNode, NPC npc,string npcName)
     {
         title = npcName;
+        currentNpc = npc;
         ActionNotifier.Instance.DialogueEnable?.Invoke(true);
         StartDialogue(npcdialogueNode.RootNode, npcName);
     }
@@ -244,8 +246,12 @@ public class DialogueManager : MonoBehaviour
 
             //Actualize on screen
             textBody.text = Write(letter);
-            PlayTextSound(); ;
-
+            PlayTextSound();
+            NokiTalks _nokiTalks = currentNpc.GetComponent<NokiTalks>();
+            if (_nokiTalks != null)
+            {
+                _nokiTalks.Talk();
+            }
             //set to go to the Up
             index += 1;
             produceTextCoroutine = StartCoroutine(PauseBetweenChars(letter, response, index, node, textBody));
@@ -253,6 +259,11 @@ public class DialogueManager : MonoBehaviour
         else
         {
             AudioManager.Instance.StopSound();
+            NokiTalks _nokiTalks = currentNpc.GetComponent<NokiTalks>();
+            if (_nokiTalks != null)
+            {
+                _nokiTalks.StopTalk();
+            }
             DialogueGoing = false;
             if (playerDialogueResponses.Count > 0) return;
 

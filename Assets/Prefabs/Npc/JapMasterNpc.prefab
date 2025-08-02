@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 6688761192159194830}
   - component: {fileID: 5533258567427443184}
   - component: {fileID: 970023518452840758}
-  m_Layer: 6
+  - component: {fileID: 1996303646262859398}
+  m_Layer: 0
   m_Name: JapMasterNpc
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -166,7 +167,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598e92bfdfa70784f920d4f09cae0a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+--- !u!114 &1996303646262859398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014631233528064311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15a6dc8a371a014a80bf2a566a3773e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noki: {fileID: 8398217668104583119}
+  idleNoki: {fileID: 2800000, guid: ea201c4863be9bc4db7eb211be1b6212, type: 3}
+  talkingNoki: {fileID: 2800000, guid: 2a4d12c7c7c485847b7a122c0686ec47, type: 3}
+  blinkNoki: {fileID: 2800000, guid: aa657d2404570324fa2cd55f6d848c3c, type: 3}
+  waitTime: 0.1
+  minWaitTime: 1
+  maxWaitTime: 4
 --- !u!1001 &7763836933836985162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -239,5 +258,10 @@ PrefabInstance:
 --- !u!4 &7796867798358308001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8a78926b6af845c4fb005889570cbe88, type: 3}
+  m_PrefabInstance: {fileID: 7763836933836985162}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8398217668104583119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2248077931167425669, guid: 8a78926b6af845c4fb005889570cbe88, type: 3}
   m_PrefabInstance: {fileID: 7763836933836985162}
   m_PrefabAsset: {fileID: 0}

@@ -32,7 +32,7 @@ public class Interaction : MonoBehaviour
             {
                 case "NPC":
                     NPC _npc = collidingObj.GetComponent<NPC>();
-                    actionNotifier.NpcInteract?.Invoke(_npc.dialogue, _npc.npcType.ToString());
+                    actionNotifier.NpcInteract?.Invoke(_npc.dialogue, _npc,_npc.npcType.ToString());
                     _npc.Interacted();
                     break;
                 case "SymbolPuzzle":
@@ -79,8 +79,9 @@ public class Interaction : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
+        if (other.tag == "Untagged") return;
+
         collidingObj = other.gameObject;
-        
     }
     void OnTriggerExit(Collider other)
     {
