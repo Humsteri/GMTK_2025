@@ -27,10 +27,6 @@ public class SymbolPuzzle : MonoBehaviour
     [SerializeField] int _secondApparatusAsnwer;
     [SerializeField] int _thirdApparatusAnswer;
 
-    private void Start() {
-        ClosePuzzle();
-    }
-
     private void Update() {
         if (OpenPuzzleBool) {
             OpenPuzzleBool = false;

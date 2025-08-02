@@ -17,4 +17,5 @@ public class ActionNotifier : MonoBehaviour
     public Action JapMaster;
     public Action<Enums.Items> Item;
     public Action<Enums.Puzzles> Puzzle;
+    public Action<WorldColor> WorldColor;
 }
