@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4360520518120383722}
   - component: {fileID: 8902450953503688507}
   - component: {fileID: 4052390389331714319}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 3077872877158271955}
   - component: {fileID: 430227139179852685}
   - component: {fileID: 2868423228596335107}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 9074022597317484094}
   - component: {fileID: 329890492668671171}
   - component: {fileID: 2885429519430269389}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 7444646235883504345}
   - component: {fileID: 5715688820390488863}
   - component: {fileID: 1483753971072151205}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ColorPicker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 6025313966950324884}
   - component: {fileID: 445954176657727347}
   - component: {fileID: 6902919631074896643}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3201754358952846141}
   - component: {fileID: 4979704637009256481}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 8934763017608059229}
   - component: {fileID: 6332834337980432074}
   - component: {fileID: 2194758090174166008}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 5011138899335126470}
   - component: {fileID: 6419680078982827699}
   - component: {fileID: 5429618237580191877}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: HighLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 2812289960943957428}
   - component: {fileID: 7365831016965098290}
   - component: {fileID: 172781200306362990}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ColorPickerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,7 +742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2869043458856994211}
   - component: {fileID: 3921976503564888286}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -795,7 +795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1435475080915796389}
   - component: {fileID: 1975985197087357630}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
