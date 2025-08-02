@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8719346163315437390}
   - component: {fileID: 5592887428611806246}
   - component: {fileID: 1219489435819154658}
+  - component: {fileID: 3622595224164661058}
+  - component: {fileID: 6965084085482080542}
   m_Layer: 0
   m_Name: RoomLight
   m_TagString: Untagged
@@ -121,3 +123,43 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!111 &3622595224164661058
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4116521838126838922}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: a36406e8027db0647af1c803ddc41e41, type: 2}
+  - {fileID: 7400000, guid: c3759e7fcf024724e94cb510fca6eff2, type: 2}
+  - {fileID: 7400000, guid: 920f806c4edaa8e4f9669b10d4d4f9fc, type: 2}
+  - {fileID: 7400000, guid: 0d0def21167090c4a8fb045c109f8c19, type: 2}
+  - {fileID: 7400000, guid: efab65a2476a213438cc427cd423053e, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
+--- !u!114 &6965084085482080542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4116521838126838922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8acec9bd973dfd4898effdf60aee698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 3622595224164661058}
+  _animations:
+  - {fileID: 7400000, guid: a36406e8027db0647af1c803ddc41e41, type: 2}
+  - {fileID: 7400000, guid: c3759e7fcf024724e94cb510fca6eff2, type: 2}
+  - {fileID: 7400000, guid: 920f806c4edaa8e4f9669b10d4d4f9fc, type: 2}
+  - {fileID: 7400000, guid: 0d0def21167090c4a8fb045c109f8c19, type: 2}
+  - {fileID: 7400000, guid: efab65a2476a213438cc427cd423053e, type: 2}

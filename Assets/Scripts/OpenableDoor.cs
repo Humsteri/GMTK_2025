@@ -12,11 +12,9 @@ public class OpenableDoor : MonoBehaviour
     [SerializeField] AudioClip _clip;
     protected virtual void Start() {
         _doorPiece.SetActive(false);
-        print(_doorPiece.activeInHierarchy);
     }
 
     public virtual void OpenDoor() {
-        print("hehe");
         if (_isOpen) { return; }
         _doorPiece.SetActive(true);
         _wallPiece.SetActive(false);
