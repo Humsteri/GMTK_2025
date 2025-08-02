@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Items : MonoBehaviour
@@ -13,5 +14,23 @@ public class Items : MonoBehaviour
     }
     #endregion
     public bool HasWeapon = false;
-    
+    [SerializeField] Transform itemGrid;
+    [SerializeField] GameObject itemPrefab;
+    [SerializeField] private ItemSpriteData spriteDatabase;
+    void Start()
+    {
+        ActionNotifier.Instance.Item += SetItem;
+    }
+    void OnDestroy()
+    {
+        ActionNotifier.Instance.Item -= SetItem;
+    }
+    public void SetItem(Enums.Items item)
+    {
+        GameObject _item = Instantiate(itemPrefab, itemGrid);
+        ItemUi itemUI = _item.GetComponent<ItemUi>();
+
+        Sprite sprite = spriteDatabase.GetSprite(item);
+        itemUI.SetSprite(sprite);
+    }
 }

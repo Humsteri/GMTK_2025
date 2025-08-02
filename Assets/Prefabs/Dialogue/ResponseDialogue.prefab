@@ -226,5 +226,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsSelected: 0
-  SelectedColor: {r: 1, g: 0.4198113, b: 0.7708692, a: 1}
+  SelectedColor: {r: 1, g: 0, b: 0.97396946, a: 1}
   OgColor: {r: 1, g: 1, b: 1, a: 1}

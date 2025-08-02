@@ -23,19 +23,17 @@ public class Interaction : MonoBehaviour
                     NPC _npc = collidingObj.GetComponent<NPC>();
                     actionNotifier.NpcInteract?.Invoke(_npc.dialogue, _npc.npcType.ToString());
                     _npc.Interacted();
-                    ActivateInteractionText(true, $"Space to interact with {_npc.npcType.ToString()}");
                     break;
                 case "SymbolPuzzle":
                     actionNotifier.Puzzle?.Invoke(Enums.Puzzles.SymbolPuzzle);
-                    ActivateInteractionText(true, "Space to interact with Puzzle");
                     break;
                 case "Key1":
                     actionNotifier.Item?.Invoke(Enums.Items.Key1);
-                    ActivateInteractionText(true, "Space to interact with item");
+                    Destroy(collidingObj);
+                    ActivateInteractionText(false, "");
                     break;
                 case "ColorChange":
                     actionNotifier.OpenColorChange?.Invoke();
-                    ActivateInteractionText(true, "Space to interact with lanterns");
                     break;
                 default:
                     break;
@@ -60,7 +58,7 @@ public class Interaction : MonoBehaviour
                 ActivateInteractionText(true, "Space to interact with Puzzle");
                 break;
             case "Key1":
-                ActivateInteractionText(true, "Space to interact with item");
+                ActivateInteractionText(true, "Space to interact with Key");
                 break;
             case "ColorChange":
                 ActivateInteractionText(true, "Space to interact with lanterns");

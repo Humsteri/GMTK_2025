@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9005066586457099095}
   - component: {fileID: 7932437602906914111}
   - component: {fileID: 1004520694838458198}
+  - component: {fileID: 1567436121320579010}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -211,4 +212,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e39dacde1d402a4ab0c7341a8bc1e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HasWeapon: 1
+  HasWeapon: 0
+  itemGrid: {fileID: 0}
+  itemPrefab: {fileID: 7324676649227058615, guid: d1f73b2504dac2b40b5058547f41a988, type: 3}
+  spriteDatabase: {fileID: 1567436121320579010}
+--- !u!114 &1567436121320579010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5594380427922876331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d24abdb3f0ac684a93368d1fa8205ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSprites:
+  - item: 0
+    sprite: {fileID: 21300000, guid: 04fa82525932ac64db771ebe0bf8002e, type: 3}
