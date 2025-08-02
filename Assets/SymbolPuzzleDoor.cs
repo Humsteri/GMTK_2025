@@ -1,23 +1,14 @@
 using UnityEngine;
 
-public class SymbolPuzzleDoor : MonoBehaviour
+public class SymbolPuzzleDoor : OpenableDoor
 {
-    [Header("Pieces")]
-    [SerializeField] GameObject _doorPiece;
-    [SerializeField] GameObject _wallPiece;
-
-    [Header("Audio")]
-    [SerializeField] AudioClip _clip;
-    private void Start() {
-        _doorPiece.SetActive(false);
-        ActionNotifier.Instance.SymbolPuzzleStatus += ReactToPuzzle;
+    protected override void Start() {
+        base.Start();
+        ActionNotifier.Instance.SymbolPuzzleCompleted += OpenDoor;
     }
 
-    public void ReactToPuzzle(bool status) {
-        if (status) {
-            _doorPiece.SetActive(true);
-            _wallPiece.SetActive(false);
-            AudioSource.PlayClipAtPoint(_clip, transform.position);
-        }
+    protected override void OnDestroy() {
+        base.OnDestroy();
+        ActionNotifier.Instance.SymbolPuzzleCompleted -= OpenDoor;
     }
 }

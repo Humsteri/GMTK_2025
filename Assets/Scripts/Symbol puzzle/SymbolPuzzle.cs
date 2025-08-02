@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class SymbolPuzzle : MonoBehaviour
 {
-    [Header("Test")]
-    public bool OpenPuzzleBool = false;
-    public bool ClosePuzzleBool = false;
-
     [Header("Puzzle")]
     [SerializeField] Enums.Puzzles _puzzle = Enums.Puzzles.SymbolPuzzle;
     [SerializeField] GameObject _puzzleObject;
@@ -35,15 +31,6 @@ public class SymbolPuzzle : MonoBehaviour
         ActionNotifier.Instance.Puzzle += OpenPuzzle;
     }
     private void Update() {
-        if (OpenPuzzleBool) {
-            OpenPuzzleBool = false;
-            OpenPuzzle(_puzzle);
-        }
-        else if (ClosePuzzleBool) {
-            ClosePuzzleBool = false;
-            ClosePuzzle();
-        }
-
         if (InputManager.Instance.SymbolNext) {
             NextApparatus();
         }
@@ -77,7 +64,9 @@ public class SymbolPuzzle : MonoBehaviour
             }
         }
     }
-
+    private void OnDestroy() {
+        ActionNotifier.Instance.Puzzle -= OpenPuzzle;
+    }
     public void OpenPuzzle(Enums.Puzzles puzzle) {
         if (puzzle != _puzzle) { return; }
         if (Completed) { return; }
@@ -146,7 +135,7 @@ public class SymbolPuzzle : MonoBehaviour
             _secondApparatusSymbol == _secondApparatusAsnwer && 
             _thirdApparatusSymbol == _thirdApparatusAnswer) 
         {
-            ActionNotifier.Instance.SymbolPuzzleStatus?.Invoke(true);
+            ActionNotifier.Instance.SymbolPuzzleCompleted?.Invoke();
             Completed = true;
             ClosePuzzle();
         }

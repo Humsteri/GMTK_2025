@@ -50,7 +50,7 @@ public class WorldColorManager : MonoBehaviour
     }
 
     private void Start() {
-        ActionNotifier.Instance.WorldColor += ColorChange;
+        ActionNotifier.Instance.WorldColorChange += ColorChange;
 
             _volume.TryGet<ColorAdjustments>(out _colorAdjust);
         if (_colorAdjust == null) {

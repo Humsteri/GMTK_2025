@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class ColorPicker : MonoBehaviour
 {
-    [Header("Test")]
-    public bool OpenBool = false;
-    public bool CloseBool = false;
-
     [Header("Color Picker Object")]
     [SerializeField] GameObject _colorPicker;
 
@@ -19,15 +15,10 @@ public class ColorPicker : MonoBehaviour
     [SerializeField] AudioClip _selectClip;
     [SerializeField] List<AudioClip> _browseClips;
 
+    private void Start() {
+        ActionNotifier.Instance.OpenColorChange += OpenColorPicker;
+    }
     private void Update() {
-        if (OpenBool) {
-            OpenBool = false;
-            OpenColorPicker();
-        }
-        else if (CloseBool) {
-            CloseBool = false;
-            CloseColorPicker();
-        }
         if (InputManager.Instance.ColorNext) {
             NextColor();
         }
@@ -39,19 +30,22 @@ public class ColorPicker : MonoBehaviour
             AudioSource.PlayClipAtPoint(_selectClip, Camera.main.transform.position, 0.5f);
 
             if (_colorIndex == 0) {
-                ActionNotifier.Instance.WorldColor?.Invoke(WorldColor.Red);
+                ActionNotifier.Instance.WorldColorChange?.Invoke(WorldColor.Red);
             }
             else if (_colorIndex == 1) {
-                ActionNotifier.Instance.WorldColor?.Invoke(WorldColor.Green);
+                ActionNotifier.Instance.WorldColorChange?.Invoke(WorldColor.Green);
             }
             else if (_colorIndex == 2) {
-                ActionNotifier.Instance.WorldColor?.Invoke(WorldColor.Blue);
+                ActionNotifier.Instance.WorldColorChange?.Invoke(WorldColor.Blue);
             }
+            ActionNotifier.Instance.InteractedWithColorChange?.Invoke();
             CloseColorPicker();
         }
 
     }
-
+    private void OnDestroy() {
+        ActionNotifier.Instance.OpenColorChange -= OpenColorPicker;
+    }
     public void OpenColorPicker() {
         InputManager.Instance.EnableColorPicker();
         _colorPicker.SetActive(true);

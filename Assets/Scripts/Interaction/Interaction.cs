@@ -33,6 +33,10 @@ public class Interaction : MonoBehaviour
                     actionNotifier.Item?.Invoke(Enums.Items.Key1);
                     ActivateInteractionText(true, "Space to interact with item");
                     break;
+                case "ColorChange":
+                    actionNotifier.OpenColorChange?.Invoke();
+                    ActivateInteractionText(true, "Space to interact with lanterns");
+                    break;
                 default:
                     break;
             }
@@ -57,6 +61,9 @@ public class Interaction : MonoBehaviour
                 break;
             case "Key1":
                 ActivateInteractionText(true, "Space to interact with item");
+                break;
+            case "ColorChange":
+                ActivateInteractionText(true, "Space to interact with lanterns");
                 break;
             default:
                 break;
