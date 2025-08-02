@@ -14,7 +14,7 @@ public class ActionNotifier : MonoBehaviour
             Instance = this;
     }
     #endregion
-
+    public Action<bool> DialogueEnable;
     public Action<Dialogue, string> NpcInteract;
     public Action<Enums.Items> Item;
     public Action<Enums.Puzzles> Puzzle;

@@ -24,10 +24,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] float minPitchChange;
     public void PlaySound()
     {
-        /* if (audioSource.isPlaying)
+        if (!DialogueManager.Instance.DialogueGoing)
         {
             audioSource.Stop();
-        } */
+            return;
+        }
         audioSource.clip = bassSound;
         audioSource.pitch = UnityEngine.Random.Range(minPitchChange, maxPitchChange);
         audioSource.Play();

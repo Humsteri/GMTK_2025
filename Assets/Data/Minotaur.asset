@@ -15,7 +15,7 @@ MonoBehaviour:
   RootNode:
     DialogueText:
     - Still here?
-    - What do you want
+    - What do you want?
     Responses:
     - responseText: Attack
       nextNode:

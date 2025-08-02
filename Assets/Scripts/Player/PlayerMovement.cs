@@ -100,16 +100,6 @@ public class PlayerMovement : MonoBehaviour
             return false;
         }
     }
-    /* Sequence sequence;
-
-    public void PlayCameraAnimation()
-    {
-        if (!sequence.isAlive)
-        {
-            sequence = Tween.PositionY(mainCamera.transform, mainCamera.transform.position.y - cameraPosChangeAmountY, cameraPosY, cameraPosChangeSpeed)
-                .Chain(Tween.PositionY(mainCamera.transform, mainCamera.transform.position.y + cameraPosChangeAmountY, cameraPosY, cameraPosChangeSpeed));
-        }
-    } */
     public void CameraWalkAnimation()
     {
         Tween.PositionY(mainCamera.transform, mainCamera.transform.position.y - cameraPosChangeAmountY, cameraPosY, cameraPosChangeSpeed);

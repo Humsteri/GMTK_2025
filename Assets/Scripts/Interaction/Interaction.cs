@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -12,7 +13,17 @@ public class Interaction : MonoBehaviour
     {
         interactionText = interactionObj.GetComponentInChildren<TextMeshProUGUI>();
         interactionObj.SetActive(false);
+        ActionNotifier.Instance.DialogueEnable += DialogueStarted;
     }
+    void OnDestroy()
+    {
+        ActionNotifier.Instance.DialogueEnable -= DialogueStarted;
+    }
+    private void DialogueStarted(bool obj)
+    {
+        interactionObj.SetActive(!obj);
+    }
+
     void Update()
     {
         if (collidingObj != null && inputManager.Interact)
@@ -47,7 +58,6 @@ public class Interaction : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        print(other.tag);
         switch (other.tag)
         {
             case "NPC":

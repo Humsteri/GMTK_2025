@@ -6,6 +6,16 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    #region Instance
+    public static DialogueManager Instance { get; private set; }
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+    }
+    #endregion
     [SerializeField] Dialogue playerAttackedAndHasWeapon;
     [SerializeField] Dialogue playerAttackedAndDoesntHaveWeapon;
     int dialogueLength = 0;
@@ -15,14 +25,15 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogueCanvasTitle;
     [SerializeField] Transform dialogueSpawnTransform;
     [SerializeField] Transform dialogueResponseSpawnTransform;
-    [SerializeField] GameObject npcDialoguePrefab;
+    //[SerializeField] GameObject npcDialoguePrefab;
+    [SerializeField] TextMeshProUGUI npcDialogueText;
     [SerializeField] GameObject dialogueResponsePrefab;
     [SerializeField] List<PlayerDialogueResponse> playerDialogueResponses = new();
     [SerializeField] PlayerDialogueResponse currentResponseSelected;
     [SerializeField] DialogueNode currentDialogueNode;
     public bool ResponseSpawned = false;
     public bool CanRespond = false;
-    bool dialogueGoing = false;
+    [HideInInspector] public bool DialogueGoing = false;
     bool skipped = false;
     string actualText = "";
     string title = "";
@@ -41,18 +52,18 @@ public class DialogueManager : MonoBehaviour
     private void InteractedWithNpc(Dialogue npcdialogueNode, string npcName)
     {
         title = npcName;
+        ActionNotifier.Instance.DialogueEnable?.Invoke(true);
         StartDialogue(npcdialogueNode.RootNode, npcName);
     }
     void Update()
     {
         if (InputManager.Instance.DialogueSelect)
         {
-            if (dialogueGoing && !skipped)
+            if (DialogueGoing && !skipped && currentDialogueIndex != currentDialogueNode.DialogueText.Count)
             {
                 skipped = true;
-                dialogueGoing = false;
+                DialogueGoing = false;
                 MoveNextInDialogue();
-                AudioManager.Instance.StopSound();
                 return;
             }
             if (playerDialogueResponses.Count <= 0)
@@ -71,40 +82,33 @@ public class DialogueManager : MonoBehaviour
         }
         if (InputManager.Instance.DialogueDown)
         {
-            if (playerDialogueResponses.Count <= 0) return;
-            currentResponseSelected.SetSelected(false);
-            currentResponseSelected = Helper.Down<PlayerDialogueResponse>(playerDialogueResponses, currentResponseSelected);
-            currentResponseSelected.SetSelected(true);
-            audioManager.PlayInteraction();
+            ChangeResponse(Helper.Down);
         }
         if (InputManager.Instance.DialogueUp)
         {
-            if (playerDialogueResponses.Count <= 0) return;
-            currentResponseSelected.SetSelected(false);
-            currentResponseSelected = Helper.Up<PlayerDialogueResponse>(playerDialogueResponses, currentResponseSelected);
-            currentResponseSelected.SetSelected(true);
-            audioManager.PlayInteraction();
+            ChangeResponse(Helper.Up);
         }
         if (InputManager.Instance.DialogueLeft)
         {
-            if (playerDialogueResponses.Count <= 0) return;
-            currentResponseSelected.SetSelected(false);
-            currentResponseSelected = Helper.Left<PlayerDialogueResponse>(playerDialogueResponses, currentResponseSelected);
-            currentResponseSelected.SetSelected(true);
-            audioManager.PlayInteraction();
+            ChangeResponse(Helper.Left);
         }
         if (InputManager.Instance.DialogueRight)
         {
-            if (playerDialogueResponses.Count <= 0) return;
-            currentResponseSelected.SetSelected(false);
-            currentResponseSelected = Helper.Right<PlayerDialogueResponse>(playerDialogueResponses, currentResponseSelected);
-            currentResponseSelected.SetSelected(true);
-            audioManager.PlayInteraction();
+            ChangeResponse(Helper.Right);
         }
+    }
+    public delegate T NavigationFunction<T>(IList<T> list, T item);
+    void ChangeResponse(NavigationFunction<PlayerDialogueResponse> navigationFunction)
+    {
+        if (playerDialogueResponses.Count <= 0) return;
+        currentResponseSelected.SetSelected(false);
+        currentResponseSelected = navigationFunction(playerDialogueResponses, currentResponseSelected);
+        currentResponseSelected.SetSelected(true);
+        audioManager.PlayInteraction();
     }
     public void StartDialogue(DialogueNode dialogueNode, string title)
     {
-        dialogueGoing = true;
+        DialogueGoing = true;
         CanRespond = false;
         dialogueCanvas.SetActive(true);
         dialogueCanvasTitle.text = title;
@@ -113,9 +117,9 @@ public class DialogueManager : MonoBehaviour
         currentDialogueNode = dialogueNode;
 
         dialogueLength = currentDialogueNode.DialogueText.Count;
-        NpcDialogue npcDialogue = SpawnNewDialogue().SetText(currentDialogueNode.DialogueText[currentDialogueIndex]);
+        npcDialogueText.text = currentDialogueNode.DialogueText[currentDialogueIndex];
         int index = 0;
-        ReproduceText(currentDialogueNode.DialogueText[currentDialogueIndex], index, currentDialogueNode, npcDialogue.dialogueText);
+        ReproduceText(currentDialogueNode.DialogueText[currentDialogueIndex], index, currentDialogueNode, npcDialogueText);
         currentDialogueIndex += 1;
     }
     public void MoveNextInDialogue()
@@ -131,10 +135,12 @@ public class DialogueManager : MonoBehaviour
             InputManager.Instance.DisableDialogue();
             dialogueCanvas.SetActive(false);
             currentDialogueIndex = 0;
+            ActionNotifier.Instance.DialogueEnable?.Invoke(false);
             return;
         }
         if (currentDialogueIndex >= dialogueLength && !currentDialogueNode.IsLastNode() && currentDialogueNode.Responses.Count > 0)
         {
+            skipped = false;
             foreach (var response in currentDialogueNode.Responses)
             {
                 playerDialogueResponses.Add(SpawnResponses().SetText(response));
@@ -144,13 +150,15 @@ public class DialogueManager : MonoBehaviour
             ResponseSpawned = true;
             StartCoroutine(CanSelectResponse());
             currentDialogueNode.dialogueEventSetter?.Invoke();
-            skipped = false;
             return;
         }
+        skipped = false;
+        DialogueGoing = true;
         ClearOldDialogue();
-        NpcDialogue npcDialogue = SpawnNewDialogue().SetText(currentDialogueNode.DialogueText[currentDialogueIndex]);
+        //NpcDialogue npcDialogue = SpawnNewDialogue().SetText(currentDialogueNode.DialogueText[currentDialogueIndex]);
+        npcDialogueText.text = currentDialogueNode.DialogueText[currentDialogueIndex];
         int index = 0;
-        ReproduceText(currentDialogueNode.DialogueText[currentDialogueIndex], index, currentDialogueNode, npcDialogue.dialogueText);
+        ReproduceText(currentDialogueNode.DialogueText[currentDialogueIndex], index, currentDialogueNode, npcDialogueText);
         currentDialogueIndex += 1;
     }
     void SpecialEncounter()
@@ -175,12 +183,12 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         CanRespond = true;
     }
-    NpcDialogue SpawnNewDialogue()
+    /* NpcDialogue SpawnNewDialogue()
     {
         GameObject _dialogue = Instantiate(npcDialoguePrefab, dialogueSpawnTransform);
         NpcDialogue _npcDialogue = _dialogue.GetComponent<NpcDialogue>();
         return _npcDialogue;
-    }
+    } */
     PlayerDialogueResponse SpawnResponses()
     {
         GameObject _dialogue = Instantiate(dialogueResponsePrefab, dialogueResponseSpawnTransform);
@@ -195,10 +203,11 @@ public class DialogueManager : MonoBehaviour
             produceTextCoroutine = null;
         }
         actualText = "";
-        for (int i = 0; i < dialogueSpawnTransform.childCount; i++)
+        npcDialogueText.text = actualText;
+        /* for (int i = 0; i < dialogueSpawnTransform.childCount; i++)
         {
             Destroy(dialogueSpawnTransform.GetChild(i).gameObject);
-        }
+        } */
     }
     public void ClearOldResponse()
     {
@@ -216,8 +225,18 @@ public class DialogueManager : MonoBehaviour
         actualText += letter;
         return actualText;
     }
+    public void PlayTextSound()
+    {
+        StartCoroutine(TextSoundWaiter());
+    }
+    IEnumerator TextSoundWaiter()
+    {
+        yield return new WaitForSeconds(PauseInfo.textPause);
+        AudioManager.Instance.PlaySound();
+    }
     private void ReproduceText(string response, int index, DialogueNode node, TextMeshProUGUI textBody)
     {
+
         if (index < response.Length)
         {
             //get one letter
@@ -225,7 +244,7 @@ public class DialogueManager : MonoBehaviour
 
             //Actualize on screen
             textBody.text = Write(letter);
-            AudioManager.Instance.PlaySound();
+            PlayTextSound(); ;
 
             //set to go to the Up
             index += 1;
@@ -234,7 +253,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             AudioManager.Instance.StopSound();
-            dialogueGoing = false;
+            DialogueGoing = false;
             if (playerDialogueResponses.Count > 0) return;
 
             if (currentDialogueIndex >= dialogueLength && !currentDialogueNode.IsLastNode() && currentDialogueNode.Responses.Count > 0)
@@ -285,6 +304,7 @@ public class DialogueManager : MonoBehaviour
 [Serializable]
 public class PauseInfo
 {
+    public float textPause;
     public float dotPause;
     public float commaPause;
     public float spacePause;
@@ -311,7 +331,7 @@ public static class Helper
             return list[index - 1];
         return item; // stay in place
     }
-     public static T Right<T>(this IList<T> list, T item)
+    public static T Right<T>(this IList<T> list, T item)
     {
         int index = list.IndexOf(item);
         if (index % 2 == 0 && index + 1 < list.Count) // Only allow right if not last in row

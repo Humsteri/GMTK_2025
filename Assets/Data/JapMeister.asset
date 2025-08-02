@@ -33,9 +33,11 @@ MonoBehaviour:
         DialogueText:
         - ...
         Responses:
-        - responseText: Who are you?
+        - responseText: Why are you here?
           nextNode:
-            DialogueText: []
+            DialogueText:
+            - I was trapped here by the minotaur
+            - I can't even remember how long ago it was
             Responses: []
             dialogueEvent:
               m_PersistentCalls:
@@ -43,9 +45,10 @@ MonoBehaviour:
           responseEvent:
             m_PersistentCalls:
               m_Calls: []
-        - responseText: Ay o
+        - responseText: Nice cat
           nextNode:
-            DialogueText: []
+            DialogueText:
+            - Meow
             Responses: []
             dialogueEvent:
               m_PersistentCalls:
