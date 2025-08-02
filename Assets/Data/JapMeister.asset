@@ -14,22 +14,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RootNode:
     DialogueText:
-    - Nyt
-    - meet
-    - tekee
-    - sen
-    - 'vitun '
-    - puzzlen
+    - Sup bozo
     Responses:
-    - responseText: No vittu en
+    - responseText: Attack
       nextNode:
         DialogueText:
         - No ei sitte
         - :(
         Responses: []
-    - responseText: Asia kunnossa
+        dialogueEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - responseText: Talk
       nextNode:
         DialogueText:
         - :)
         - "Hyv\xE4"
         Responses: []
+        dialogueEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - responseText: 
+      nextNode:
+        DialogueText: []
+        Responses: []
+        dialogueEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - responseText: Leave
+      nextNode:
+        DialogueText: []
+        Responses: []
+        dialogueEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    dialogueEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4920843769272894848, guid: 4c3bcf8881f3ab246827c705049c0723, type: 3}
+          m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+          m_MethodName: TestDialogueEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

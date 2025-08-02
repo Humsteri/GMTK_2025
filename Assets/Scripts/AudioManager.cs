@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip bassSound;
     [SerializeField] AudioClip footStep;
     [SerializeField] AudioClip turn;
+    [SerializeField] AudioClip moveInteract;
+    [SerializeField] AudioClip selectedInteraction;
     [SerializeField] float maxPitchChange;
     [SerializeField] float minPitchChange;
     public void PlaySound()
@@ -36,6 +38,18 @@ public class AudioManager : MonoBehaviour
         {
             audioSource.Stop();
         }
+    }
+    public void PlayInteraction()
+    {
+        audioSource.pitch = 0.07f;
+        audioSource.clip = moveInteract;
+        audioSource.Play();
+    }
+    public void PlaySelectedInteraction()
+    {
+        audioSource.pitch = 0.5f;
+        audioSource.clip = selectedInteraction;
+        audioSource.Play();
     }
     public void PlayFootStep(Vector3 pos)
     {

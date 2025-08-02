@@ -1235,6 +1235,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""MoveLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""1ff33a2f-bcf4-48be-a9ec-341c18008895"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""150dd20e-d8a0-407d-8614-efe188dc3885"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""MoveDown"",
                     ""type"": ""Button"",
                     ""id"": ""cde95d20-43c9-4baf-b22c-9440120b53a5"",
@@ -1264,6 +1282,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MoveUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03e126fc-f39b-4c4f-8b32-7c7ff5a25e39"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1eb159b4-7fb3-447b-86d9-2f50d941f98d"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1381,6 +1421,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
         m_Dialogue_Select = m_Dialogue.FindAction("Select", throwIfNotFound: true);
         m_Dialogue_MoveUp = m_Dialogue.FindAction("MoveUp", throwIfNotFound: true);
+        m_Dialogue_MoveLeft = m_Dialogue.FindAction("MoveLeft", throwIfNotFound: true);
+        m_Dialogue_MoveRight = m_Dialogue.FindAction("MoveRight", throwIfNotFound: true);
         m_Dialogue_MoveDown = m_Dialogue.FindAction("MoveDown", throwIfNotFound: true);
     }
 
@@ -2019,6 +2061,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private List<IDialogueActions> m_DialogueActionsCallbackInterfaces = new List<IDialogueActions>();
     private readonly InputAction m_Dialogue_Select;
     private readonly InputAction m_Dialogue_MoveUp;
+    private readonly InputAction m_Dialogue_MoveLeft;
+    private readonly InputAction m_Dialogue_MoveRight;
     private readonly InputAction m_Dialogue_MoveDown;
     /// <summary>
     /// Provides access to input actions defined in input action map "Dialogue".
@@ -2039,6 +2083,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Dialogue/MoveUp".
         /// </summary>
         public InputAction @MoveUp => m_Wrapper.m_Dialogue_MoveUp;
+        /// <summary>
+        /// Provides access to the underlying input action "Dialogue/MoveLeft".
+        /// </summary>
+        public InputAction @MoveLeft => m_Wrapper.m_Dialogue_MoveLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "Dialogue/MoveRight".
+        /// </summary>
+        public InputAction @MoveRight => m_Wrapper.m_Dialogue_MoveRight;
         /// <summary>
         /// Provides access to the underlying input action "Dialogue/MoveDown".
         /// </summary>
@@ -2075,6 +2127,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @MoveUp.started += instance.OnMoveUp;
             @MoveUp.performed += instance.OnMoveUp;
             @MoveUp.canceled += instance.OnMoveUp;
+            @MoveLeft.started += instance.OnMoveLeft;
+            @MoveLeft.performed += instance.OnMoveLeft;
+            @MoveLeft.canceled += instance.OnMoveLeft;
+            @MoveRight.started += instance.OnMoveRight;
+            @MoveRight.performed += instance.OnMoveRight;
+            @MoveRight.canceled += instance.OnMoveRight;
             @MoveDown.started += instance.OnMoveDown;
             @MoveDown.performed += instance.OnMoveDown;
             @MoveDown.canceled += instance.OnMoveDown;
@@ -2095,6 +2153,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @MoveUp.started -= instance.OnMoveUp;
             @MoveUp.performed -= instance.OnMoveUp;
             @MoveUp.canceled -= instance.OnMoveUp;
+            @MoveLeft.started -= instance.OnMoveLeft;
+            @MoveLeft.performed -= instance.OnMoveLeft;
+            @MoveLeft.canceled -= instance.OnMoveLeft;
+            @MoveRight.started -= instance.OnMoveRight;
+            @MoveRight.performed -= instance.OnMoveRight;
+            @MoveRight.canceled -= instance.OnMoveRight;
             @MoveDown.started -= instance.OnMoveDown;
             @MoveDown.performed -= instance.OnMoveDown;
             @MoveDown.canceled -= instance.OnMoveDown;
@@ -2430,6 +2494,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveUp(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MoveLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MoveRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveRight(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "MoveDown" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

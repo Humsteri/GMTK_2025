@@ -1149,6 +1149,24 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "MoveLeft",
+                    "type": "Button",
+                    "id": "1ff33a2f-bcf4-48be-a9ec-341c18008895",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveRight",
+                    "type": "Button",
+                    "id": "150dd20e-d8a0-407d-8614-efe188dc3885",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "MoveDown",
                     "type": "Button",
                     "id": "cde95d20-43c9-4baf-b22c-9440120b53a5",
@@ -1178,6 +1196,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "MoveUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03e126fc-f39b-4c4f-8b32-7c7ff5a25e39",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1eb159b4-7fb3-447b-86d9-2f50d941f98d",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

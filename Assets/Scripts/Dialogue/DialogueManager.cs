@@ -23,9 +23,19 @@ public class DialogueManager : MonoBehaviour
     string actualText = "";
     public PauseInfo PauseInfo;
     Coroutine produceTextCoroutine;
+    AudioManager audioManager => AudioManager.Instance;
     void Start()
     {
+        ActionNotifier.Instance.JapMaster += InteractedWithNpc;
+    }
 
+    void OnDestroy()
+    {
+        ActionNotifier.Instance.JapMaster -= InteractedWithNpc;
+    }
+    private void InteractedWithNpc()
+    {
+        StartDialogue(dialogue.RootNode);
     }
     void Update()
     {
@@ -37,14 +47,12 @@ public class DialogueManager : MonoBehaviour
             }
             else if (currentResponseSelected != null && CanRespond)
             {
+                if (currentResponseSelected.SelectedResponse().DialogueText.Count == 0) return; // Selected empty response. 
+                audioManager.PlaySelectedInteraction();
                 ClearOldResponse();
                 currentDialogueIndex = 0;
                 StartDialogue(currentResponseSelected.SelectedResponse());
             }
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            StartDialogue(dialogue.RootNode);
         }
         if (InputManager.Instance.DialogueDown)
         {
@@ -52,13 +60,31 @@ public class DialogueManager : MonoBehaviour
             currentResponseSelected.SetSelected(false);
             currentResponseSelected = Helper.Down<PlayerDialogueResponse>(playerDialogueResponses, currentResponseSelected);
             currentResponseSelected.SetSelected(true);
+            audioManager.PlayInteraction();
         }
         if (InputManager.Instance.DialogueUp)
         {
             if (playerDialogueResponses.Count <= 0) return;
             currentResponseSelected.SetSelected(false);
-            currentResponseSelected = Helper.Next<PlayerDialogueResponse>(playerDialogueResponses, currentResponseSelected);
+            currentResponseSelected = Helper.Up<PlayerDialogueResponse>(playerDialogueResponses, currentResponseSelected);
             currentResponseSelected.SetSelected(true);
+            audioManager.PlayInteraction();
+        }
+        if (InputManager.Instance.DialogueLeft)
+        {
+            if (playerDialogueResponses.Count <= 0) return;
+            currentResponseSelected.SetSelected(false);
+            currentResponseSelected = Helper.Left<PlayerDialogueResponse>(playerDialogueResponses, currentResponseSelected);
+            currentResponseSelected.SetSelected(true);
+            audioManager.PlayInteraction();
+        }
+        if (InputManager.Instance.DialogueRight)
+        {
+            if (playerDialogueResponses.Count <= 0) return;
+            currentResponseSelected.SetSelected(false);
+            currentResponseSelected = Helper.Right<PlayerDialogueResponse>(playerDialogueResponses, currentResponseSelected);
+            currentResponseSelected.SetSelected(true);
+            audioManager.PlayInteraction();
         }
     }
     public void StartDialogue(DialogueNode dialogueNode)
@@ -78,10 +104,11 @@ public class DialogueManager : MonoBehaviour
     public void MoveNextInDialogue()
     {
         if (ResponseSpawned) return;
-        if (currentDialogueNode.IsLastNode() && currentDialogueIndex >= dialogueLength)
+        if (currentDialogueNode.IsLastNode() && currentDialogueIndex >= dialogueLength) // Was last dialogue and there are no responses
         {
             ClearOldDialogue();
             ClearOldResponse();
+            currentDialogueNode.dialogueEventSetter?.Invoke();
             currentDialogueNode = null;
             InputManager.Instance.DisableDialogue();
             dialogueCanvas.SetActive(false);
@@ -97,6 +124,7 @@ public class DialogueManager : MonoBehaviour
             currentResponseSelected = playerDialogueResponses[currentResponseIndex];
             ResponseSpawned = true;
             StartCoroutine(CanSelectResponse());
+            currentDialogueNode.dialogueEventSetter?.Invoke();
             return;
         }
         ClearOldDialogue();
@@ -145,6 +173,7 @@ public class DialogueManager : MonoBehaviour
         currentResponseIndex = 0;
         ResponseSpawned = false;
     }
+    #region Text letter by letter
     private string Write(char letter)
     {
         actualText += letter;
@@ -152,8 +181,6 @@ public class DialogueManager : MonoBehaviour
     }
     private void ReproduceText(string response, int index, DialogueNode node, TextMeshProUGUI textBody)
     {
-        //if (skipped == true) return;
-        //if not readied all letters
         if (index < response.Length)
         {
             //get one letter
@@ -162,14 +189,14 @@ public class DialogueManager : MonoBehaviour
             //Actualize on screen
             textBody.text = Write(letter);
             AudioManager.Instance.PlaySound();
-            //set to go to the next
+
+            //set to go to the Up
             index += 1;
             produceTextCoroutine = StartCoroutine(PauseBetweenChars(letter, response, index, node, textBody));
         }
         else
         {
             AudioManager.Instance.StopSound();
-            //DialogueGoing = false;
             //SpawnResponseButtons(title, node);
         }
     }
@@ -195,7 +222,13 @@ public class DialogueManager : MonoBehaviour
                 yield break;
         }
     }
-    
+    #endregion
+    #region Dialogue events
+    public void TestDialogueEvent()
+    {
+        print("Got to event");
+    }
+    #endregion
 }
 [Serializable]
 public class PauseInfo
@@ -207,36 +240,30 @@ public class PauseInfo
 }
 public static class Helper
 {
-    public static T Next<T>(this IList<T> list, T item)
+    public static T Up<T>(this IList<T> list, T item)
     {
-        var nextIndex = list.IndexOf(item) + 1;
-        if (list.Count == 2 && nextIndex == 1)
-        {
-            //Debug.Log("Only two left in list");
-            return list[1];
-        }
-        if (nextIndex == list.Count)
-        {
-            return list[0];
-        }
-
-        return list[nextIndex];
+        int index = list.IndexOf(item);
+        int newIndex = index - 2;
+        return newIndex >= 0 ? list[newIndex] : item; // stay in place if out of bounds
     }
     public static T Down<T>(this IList<T> list, T item)
     {
-        var prevIndex = list.IndexOf(item) - 1;
-
-        if (list.Count == 2 && prevIndex == 0)
-        {
-            // Only two left in list
-            return list[0];
-        }
-
-        if (prevIndex < 0)
-        {
-            return list[list.Count - 1]; // Wrap around to the last item
-        }
-
-        return list[prevIndex];
+        int index = list.IndexOf(item);
+        int newIndex = index + 2;
+        return newIndex < list.Count ? list[newIndex] : item; // stay in place if out of bounds
+    }
+    public static T Left<T>(this IList<T> list, T item)
+    {
+        int index = list.IndexOf(item);
+        if (index % 2 == 1) // Only allow left if not first in row
+            return list[index - 1];
+        return item; // stay in place
+    }
+     public static T Right<T>(this IList<T> list, T item)
+    {
+        int index = list.IndexOf(item);
+        if (index % 2 == 0 && index + 1 < list.Count) // Only allow right if not last in row
+            return list[index + 1];
+        return item; // stay in place
     }
 }

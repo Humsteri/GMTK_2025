@@ -24,6 +24,8 @@ public class InputManager : MonoBehaviour
     [Header("Dialogue")]
     public bool DialogueUp => InputActions.Dialogue.MoveUp?.WasPressedThisFrame() ?? false;
     public bool DialogueDown => InputActions.Dialogue.MoveDown?.WasPressedThisFrame() ?? false;
+    public bool DialogueRight => InputActions.Dialogue.MoveRight?.WasPressedThisFrame() ?? false;
+    public bool DialogueLeft => InputActions.Dialogue.MoveLeft?.WasPressedThisFrame() ?? false;
     public bool DialogueSelect => InputActions.Dialogue.Select?.WasPressedThisFrame() ?? false;
 
     [Header("Symbol Puzzle")]
@@ -48,10 +50,12 @@ public class InputManager : MonoBehaviour
     }
     public void EnableSymbolInputs()
     {
+        InputActions.Player.Disable();
         InputActions.SymbolPuzzle.Enable();
     }
 
     public void DisableSymbolInputs() {
+        InputActions.Player.Enable();
         InputActions.SymbolPuzzle.Disable();
     }
 }
