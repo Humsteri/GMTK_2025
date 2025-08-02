@@ -15,6 +15,7 @@ MonoBehaviour:
   RootNode:
     DialogueText:
     - Sup bozo
+    - I am the mighty japper
     Responses:
     - responseText: Attack
       nextNode:
@@ -28,9 +29,22 @@ MonoBehaviour:
     - responseText: Talk
       nextNode:
         DialogueText:
-        - :)
-        - "Hyv\xE4"
-        Responses: []
+        - ...
+        Responses:
+        - responseText: Who are you?
+          nextNode:
+            DialogueText: []
+            Responses: []
+            dialogueEvent:
+              m_PersistentCalls:
+                m_Calls: []
+        - responseText: Ay o
+          nextNode:
+            DialogueText: []
+            Responses: []
+            dialogueEvent:
+              m_PersistentCalls:
+                m_Calls: []
         dialogueEvent:
           m_PersistentCalls:
             m_Calls: []
@@ -43,7 +57,8 @@ MonoBehaviour:
             m_Calls: []
     - responseText: Leave
       nextNode:
-        DialogueText: []
+        DialogueText:
+        - Bye
         Responses: []
         dialogueEvent:
           m_PersistentCalls:

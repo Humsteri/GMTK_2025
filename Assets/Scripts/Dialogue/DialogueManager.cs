@@ -20,6 +20,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] DialogueNode currentDialogueNode;
     public bool ResponseSpawned = false;
     public bool CanRespond = false;
+    bool dialogueGoing = false;
+    bool skipped = false;
     string actualText = "";
     public PauseInfo PauseInfo;
     Coroutine produceTextCoroutine;
@@ -41,6 +43,14 @@ public class DialogueManager : MonoBehaviour
     {
         if (InputManager.Instance.DialogueSelect)
         {
+            if (dialogueGoing && !skipped)
+            {
+                skipped = true;
+                dialogueGoing = false;
+                MoveNextInDialogue();
+                AudioManager.Instance.StopSound();
+                return;
+            }
             if (playerDialogueResponses.Count <= 0)
             {
                 MoveNextInDialogue();
@@ -89,6 +99,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartDialogue(DialogueNode dialogueNode)
     {
+        dialogueGoing = true;
         CanRespond = false;
         dialogueCanvas.SetActive(true);
         InputManager.Instance.EnableDialogue();
@@ -106,12 +117,14 @@ public class DialogueManager : MonoBehaviour
         if (ResponseSpawned) return;
         if (currentDialogueNode.IsLastNode() && currentDialogueIndex >= dialogueLength) // Was last dialogue and there are no responses
         {
+            skipped = false;
             ClearOldDialogue();
             ClearOldResponse();
             currentDialogueNode.dialogueEventSetter?.Invoke();
             currentDialogueNode = null;
             InputManager.Instance.DisableDialogue();
             dialogueCanvas.SetActive(false);
+            currentDialogueIndex = 0;
             return;
         }
         if (currentDialogueIndex >= dialogueLength && !currentDialogueNode.IsLastNode() && currentDialogueNode.Responses.Count > 0)
@@ -125,6 +138,7 @@ public class DialogueManager : MonoBehaviour
             ResponseSpawned = true;
             StartCoroutine(CanSelectResponse());
             currentDialogueNode.dialogueEventSetter?.Invoke();
+            skipped = false;
             return;
         }
         ClearOldDialogue();
@@ -197,6 +211,21 @@ public class DialogueManager : MonoBehaviour
         else
         {
             AudioManager.Instance.StopSound();
+            dialogueGoing = false;
+            if (playerDialogueResponses.Count > 0) return;
+
+            if (currentDialogueIndex >= dialogueLength && !currentDialogueNode.IsLastNode() && currentDialogueNode.Responses.Count > 0)
+            {
+                foreach (var responseNode in currentDialogueNode.Responses)
+                {
+                    playerDialogueResponses.Add(SpawnResponses().SetText(responseNode));
+                }
+                playerDialogueResponses[currentResponseIndex].SetSelected(true);
+                currentResponseSelected = playerDialogueResponses[currentResponseIndex];
+                ResponseSpawned = true;
+                StartCoroutine(CanSelectResponse());
+                return;
+            }
             //SpawnResponseButtons(title, node);
         }
     }
