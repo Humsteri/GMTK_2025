@@ -14,6 +14,7 @@ public class Items : MonoBehaviour
     }
     #endregion
     public bool HasWeapon = false;
+    public bool HasKey = false;
     [SerializeField] Transform itemGrid;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] private ItemSpriteData spriteDatabase;
@@ -32,5 +33,13 @@ public class Items : MonoBehaviour
 
         Sprite sprite = spriteDatabase.GetSprite(item);
         itemUI.SetSprite(sprite);
+        switch (item)
+        {
+            case Enums.Items.Key1:
+                HasKey = true;
+                break;
+            default:
+                break;
+        }
     }
 }

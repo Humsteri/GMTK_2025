@@ -50,7 +50,7 @@ public class DialogueManager : MonoBehaviour
     {
         ActionNotifier.Instance.NpcInteract -= InteractedWithNpc;
     }
-    private void InteractedWithNpc(Dialogue npcdialogueNode, NPC npc,string npcName)
+    private void InteractedWithNpc(Dialogue npcdialogueNode, NPC npc, string npcName)
     {
         title = npcName;
         currentNpc = npc;
@@ -78,7 +78,7 @@ public class DialogueManager : MonoBehaviour
                 if (currentResponseSelected.SelectedResponse().DialogueText.Count == 0) return; // Selected empty response. 
                 audioManager.PlaySelectedInteraction();
                 ClearOldResponse();
-                currentDialogueIndex = 0;   
+                currentDialogueIndex = 0;
                 StartDialogue(currentResponseSelected.SelectedResponse(), title);
             }
         }
@@ -242,8 +242,21 @@ public class DialogueManager : MonoBehaviour
         if (index < response.Length)
         {
             //get one letter
-            char letter = response[index];
 
+            char letter = response[index];
+            /* if (letter == '<')
+            {
+                int tagEndIndex = response.IndexOf('>', index);
+                if (tagEndIndex != -1)
+                {
+                    // Grab the whole tag and add it instantly
+                    string fullTag = response.Substring(index, tagEndIndex - index + 1);
+                    textBody.text += fullTag;
+
+                    index = tagEndIndex + 1; // Skip past the tag
+                    return;
+                }
+            } */
             //Actualize on screen
             textBody.text = Write(letter);
             PlayTextSound();
@@ -309,6 +322,11 @@ public class DialogueManager : MonoBehaviour
     public void TestDialogueEvent()
     {
         print("Got to event");
+    }
+    public void PlayerDies()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerMovement>().TeleportPlayer(new Vector3(0, 1, 5));
     }
     #endregion
 }

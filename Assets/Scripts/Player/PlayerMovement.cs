@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 targetGridPos;
     Vector3 prevTargetGridPos;
     Vector3 targetRotation;
-
+    bool teleporting;
     InputManager inputManager => InputManager.Instance;
     void Start()
     {
@@ -40,9 +40,16 @@ public class PlayerMovement : MonoBehaviour
         cameraFov = mainCamera.fieldOfView;
         
     }
+    public void TeleportPlayer(Vector3 pos)
+    {
+        teleporting = true;
+        targetGridPos = Vector3Int.RoundToInt(pos);
+        teleporting = false;
+    }  
     void FixedUpdate()
     {
-        MovePlayer();
+        if(!teleporting)
+            MovePlayer();
     }
     void MovePlayer()
     {

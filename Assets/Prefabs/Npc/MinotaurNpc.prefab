@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6954612423284757027}
   - component: {fileID: 4807583629143504374}
   - component: {fileID: 3932514651938155718}
+  - component: {fileID: 2161967791447848513}
+  - component: {fileID: 352164636299788790}
   m_Layer: 6
   m_Name: MinotaurNpc
   m_TagString: NPC
@@ -31,9 +33,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.38, y: 1.39, z: 3.22}
-  m_LocalScale: {x: 2, y: 3, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8169181656768836458}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2910654418824798799
@@ -51,7 +54,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898936807509711861}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -108,8 +111,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &4807583629143504374
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -152,3 +155,102 @@ MonoBehaviour:
   dialogue: {fileID: 11400000, guid: 93af8046c810ce74aa89032c9ee3623a, type: 2}
   secondDialogue: {fileID: 11400000, guid: 538cce7ac61acf94a9ffdf80aa7ad003, type: 2}
   npcType: 1
+--- !u!114 &2161967791447848513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898936807509711861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e92bfdfa70784f920d4f09cae0a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Smooth: 1
+--- !u!114 &352164636299788790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898936807509711861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15a6dc8a371a014a80bf2a566a3773e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npc: {fileID: 8796959179134183888}
+  idleTexture: {fileID: 2800000, guid: 6ecdea0abbc8e1e45902e0c2fa8f0341, type: 3}
+  talkingTexture: {fileID: 2800000, guid: 18a15fdb4e0dbb04fb6a73379bfda8a2, type: 3}
+  blinkTexture: {fileID: 2800000, guid: 0cb29f9fe38e2054f9d624b3f7b6be09, type: 3}
+  waitTime: 0.1
+  minWaitTime: 1
+  maxWaitTime: 4
+--- !u!1001 &8562603010271384705
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5845004143584754709}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+      propertyPath: m_Name
+      value: Minotaur
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+--- !u!4 &8169181656768836458 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+  m_PrefabInstance: {fileID: 8562603010271384705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8796959179134183888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f2721ea58dd6494b969d1fcf7cda73c, type: 3}
+  m_PrefabInstance: {fileID: 8562603010271384705}
+  m_PrefabAsset: {fileID: 0}
