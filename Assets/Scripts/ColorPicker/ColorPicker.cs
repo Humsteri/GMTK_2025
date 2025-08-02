@@ -40,6 +40,7 @@ public class ColorPicker : MonoBehaviour
             else if (_colorIndex == 2) {
                 ActionNotifier.Instance.WorldColor?.Invoke(WorldColor.Blue);
             }
+            CloseColorPicker();
         }
 
     }
