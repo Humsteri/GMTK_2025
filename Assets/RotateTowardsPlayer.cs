@@ -2,17 +2,12 @@ using UnityEngine;
 
 public class RotateTowardsPlayer : MonoBehaviour
 {
-    [SerializeField] Transform player;
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-    void Update()
+    void LateUpdate()
     {
         Rotate();
     }
     void Rotate()
     {
-        transform.LookAt(player);
+        transform.forward = Camera.main.transform.forward;
     }
 }
