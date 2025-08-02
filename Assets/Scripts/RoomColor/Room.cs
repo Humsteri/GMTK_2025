@@ -25,8 +25,8 @@ public class Room : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
 
         if (WorldColorManager.Instance.WorldColor == _roomColor || WorldColorManager.Instance.WorldColor == WorldColor.All) {
-            
-            Interaction player = other.GetComponent<Interaction>();
+
+            PlayerMovement player = other.GetComponent<PlayerMovement>();
             if (player == null) { return; }
 
             _playerInRoom = true;
@@ -42,7 +42,7 @@ public class Room : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         if (!_lightsOnInRoom) { return; }
-        Interaction player = other.GetComponent<Interaction>();
+        PlayerMovement player = other.GetComponent<PlayerMovement>();
         if (player == null) { return; }
 
         _playerInRoom = false;
@@ -51,7 +51,9 @@ public class Room : MonoBehaviour
 
     IEnumerator EnableLightsWithDelay() {
         yield return new WaitForSeconds(_lightDelayTime);
-        EnableLights();
+        if (_playerInRoom) { 
+            EnableLights();
+        }
     }
 
     public void EnableLights() {

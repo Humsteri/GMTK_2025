@@ -8,6 +8,7 @@ public class SymbolPuzzle : MonoBehaviour
     public bool ClosePuzzleBool = false;
 
     [Header("Puzzle")]
+    [SerializeField] Enums.Puzzles _puzzle = Enums.Puzzles.SymbolPuzzle;
     [SerializeField] GameObject _puzzleObject;
     public bool Completed = false;
 
@@ -30,10 +31,13 @@ public class SymbolPuzzle : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip _audioClip;
 
+    private void Start() {
+        ActionNotifier.Instance.Puzzle += OpenPuzzle;
+    }
     private void Update() {
         if (OpenPuzzleBool) {
             OpenPuzzleBool = false;
-            OpenPuzzle();
+            OpenPuzzle(_puzzle);
         }
         else if (ClosePuzzleBool) {
             ClosePuzzleBool = false;
@@ -74,7 +78,8 @@ public class SymbolPuzzle : MonoBehaviour
         }
     }
 
-    public void OpenPuzzle() {
+    public void OpenPuzzle(Enums.Puzzles puzzle) {
+        if (puzzle != _puzzle) { return; }
         if (Completed) { return; }
         InputManager.Instance.EnableSymbolInputs();
         _puzzleObject.SetActive(true);

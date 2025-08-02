@@ -7,7 +7,7 @@ public class Interaction : MonoBehaviour
     InputManager inputManager => InputManager.Instance;
     [SerializeField] GameObject interactionObj;
     TextMeshProUGUI interactionText;
-    GameObject collidingObj;
+    [SerializeField] GameObject collidingObj;
     void Start()
     {
         interactionText = interactionObj.GetComponentInChildren<TextMeshProUGUI>();
@@ -45,6 +45,7 @@ public class Interaction : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        print(other.tag);
         switch (other.tag)
         {
             case "NPC":
