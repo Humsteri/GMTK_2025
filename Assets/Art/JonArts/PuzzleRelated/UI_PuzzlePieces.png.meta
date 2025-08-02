@@ -228,6 +228,116 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UI_PuzzlePieces_6
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 256
+        width: 392
+        height: 704
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056cb9384ee393343a636378bd6983cc
+      internalID: 1249520192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_PuzzlePieces_7
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 232
+        width: 528
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b73240a6e628664993dbdef2e07dcf7
+      internalID: 451940332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_PuzzlePieces_8
+      rect:
+        serializedVersion: 2
+        x: 1592
+        y: 288
+        width: 744
+        height: 704
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18594ff2f86b45e4698f2cc02c8db2e3
+      internalID: 1674825310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_PuzzlePieces_9
+      rect:
+        serializedVersion: 2
+        x: 2472
+        y: 288
+        width: 512
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 542c0b075fbec564db6c521ab851d7b3
+      internalID: -529270002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_PuzzlePieces_10
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 288
+        width: 664
+        height: 768
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 880c7bed9674ec341814873ab8cdc005
+      internalID: 1721732503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -244,10 +354,17 @@ TextureImporter:
     nameFileIdTable:
       UI_PuzzlePieces_0: -1180607275
       UI_PuzzlePieces_1: -1693600212
+      UI_PuzzlePieces_10: 1721732503
+      UI_PuzzlePieces_11: -1593465879
+      UI_PuzzlePieces_12: -1854069283
       UI_PuzzlePieces_2: 217122245
       UI_PuzzlePieces_3: 654143739
       UI_PuzzlePieces_4: 1653983958
       UI_PuzzlePieces_5: -552484308
+      UI_PuzzlePieces_6: 1249520192
+      UI_PuzzlePieces_7: 451940332
+      UI_PuzzlePieces_8: 1674825310
+      UI_PuzzlePieces_9: -529270002
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
