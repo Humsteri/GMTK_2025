@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1221432488802109974}
   - component: {fileID: 2011879984125425551}
   - component: {fileID: 2578315845895782796}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 638750894724883300}
   - component: {fileID: 5651874215138126087}
   - component: {fileID: 4477984447174605442}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: ItemPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

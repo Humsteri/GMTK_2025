@@ -8,6 +8,7 @@ TagManager:
   - SymbolPuzzle
   - Key1
   - ColorChange
+  - Dagger
   layers:
   - Default
   - TransparentFX

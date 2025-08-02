@@ -5,7 +5,7 @@ public class Enums : MonoBehaviour
     public enum Items
     {
         Key1,
-        
+        Dagger
     }
     public enum Puzzles
     {

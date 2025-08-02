@@ -43,6 +43,11 @@ public class Interaction : MonoBehaviour
                     Destroy(collidingObj);
                     ActivateInteractionText(false, "");
                     break;
+                case "Dagger":
+                    actionNotifier.Item?.Invoke(Enums.Items.Dagger);
+                    Destroy(collidingObj);
+                    ActivateInteractionText(false, "");
+                    break;
                 case "ColorChange":
                     actionNotifier.OpenColorChange?.Invoke();
                     break;
