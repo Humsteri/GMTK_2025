@@ -29,7 +29,6 @@ public class SymbolPuzzle : MonoBehaviour
 
     private void Start() {
         ClosePuzzle();
-        OpenPuzzle();
     }
 
     private void Update() {
