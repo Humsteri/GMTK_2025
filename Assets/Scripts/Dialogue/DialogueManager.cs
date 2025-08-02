@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] Dialogue dialogue;
+    [SerializeField] Dialogue playerAttackedAndHasWeapon;
+    [SerializeField] Dialogue playerAttackedAndDoesntHaveWeapon;
     int dialogueLength = 0;
     int currentDialogueIndex = 0;
     int currentResponseIndex = 0;
@@ -60,10 +61,11 @@ public class DialogueManager : MonoBehaviour
             }
             else if (currentResponseSelected != null && CanRespond)
             {
+                SpecialEncounter();
                 if (currentResponseSelected.SelectedResponse().DialogueText.Count == 0) return; // Selected empty response. 
                 audioManager.PlaySelectedInteraction();
                 ClearOldResponse();
-                currentDialogueIndex = 0;
+                currentDialogueIndex = 0;   
                 StartDialogue(currentResponseSelected.SelectedResponse(), title);
             }
         }
@@ -150,6 +152,23 @@ public class DialogueManager : MonoBehaviour
         int index = 0;
         ReproduceText(currentDialogueNode.DialogueText[currentDialogueIndex], index, currentDialogueNode, npcDialogue.dialogueText);
         currentDialogueIndex += 1;
+    }
+    void SpecialEncounter()
+    {
+        if (currentResponseSelected.GetResponseText() == "Attack" && currentResponseSelected.SelectedResponse().DialogueText.Count == 0)
+        {
+            audioManager.PlaySelectedInteraction();
+            ClearOldResponse();
+            currentDialogueIndex = 0;
+            if (Items.Instance.HasWeapon)
+            {
+                StartDialogue(playerAttackedAndHasWeapon.RootNode, title);
+            }
+            else
+            {
+                StartDialogue(playerAttackedAndDoesntHaveWeapon.RootNode, title);
+            }
+        }
     }
     IEnumerator CanSelectResponse()
     {

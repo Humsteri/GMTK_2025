@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4920843769272894848}
   - component: {fileID: 9005066586457099095}
   - component: {fileID: 7932437602906914111}
+  - component: {fileID: 1004520694838458198}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -59,8 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b8b9cb76c0cba4f9be6c5308459635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: deedf98b4fcc234488de5af339dc7d34, type: 2}
+  playerAttackedAndHasWeapon: {fileID: 11400000, guid: 77ad8e7f904de5f4da9fa6938a39c9f7, type: 2}
+  playerAttackedAndDoesntHaveWeapon: {fileID: 11400000, guid: ad4d98579dc03bc4fb8a7d789aa0889a, type: 2}
   dialogueCanvas: {fileID: 0}
+  dialogueCanvasTitle: {fileID: 0}
   dialogueSpawnTransform: {fileID: 0}
   dialogueResponseSpawnTransform: {fileID: 0}
   npcDialoguePrefab: {fileID: 7575336977954857319, guid: 5eae6d262e81f914e9930f3cf4d89eb5, type: 3}
@@ -196,3 +199,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1004520694838458198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5594380427922876331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e39dacde1d402a4ab0c7341a8bc1e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HasWeapon: 1

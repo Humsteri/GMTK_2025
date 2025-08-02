@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerDialogueResponse : MonoBehaviour
 {
     public bool IsSelected = false;
-    TextMeshProUGUI dialogueText => GetComponentInChildren<TextMeshProUGUI>();
+    public TextMeshProUGUI playerDialogueResponseText => GetComponentInChildren<TextMeshProUGUI>();
     DialogueNode dialogueNode;
     public Color SelectedColor;
     public Color OgColor;
@@ -13,20 +13,24 @@ public class PlayerDialogueResponse : MonoBehaviour
     public PlayerDialogueResponse SetText(DialogueResponse respondeNode)
     {
         SetSelected(IsSelected);
-        dialogueText.text = respondeNode.responseText;
+        playerDialogueResponseText.text = respondeNode.responseText;
         dialogueNode = respondeNode.nextNode;
         return this;
+    }
+    public string GetResponseText()
+    {
+        return playerDialogueResponseText.text;
     }
     public void SetSelected(bool enable)
     {
         IsSelected = enable;
         if (enable)
         {
-            image.color = SelectedColor; 
+            image.color = SelectedColor;
         }
         else
         {
-            image.color = OgColor; 
+            image.color = OgColor;
         }
     }
     public DialogueNode SelectedResponse()

@@ -19,13 +19,14 @@ MonoBehaviour:
     Responses:
     - responseText: Attack
       nextNode:
-        DialogueText:
-        - No ei sitte
-        - :(
+        DialogueText: []
         Responses: []
         dialogueEvent:
           m_PersistentCalls:
             m_Calls: []
+      responseEvent:
+        m_PersistentCalls:
+          m_Calls: []
     - responseText: Talk
       nextNode:
         DialogueText:
@@ -38,6 +39,9 @@ MonoBehaviour:
             dialogueEvent:
               m_PersistentCalls:
                 m_Calls: []
+          responseEvent:
+            m_PersistentCalls:
+              m_Calls: []
         - responseText: Ay o
           nextNode:
             DialogueText: []
@@ -45,9 +49,15 @@ MonoBehaviour:
             dialogueEvent:
               m_PersistentCalls:
                 m_Calls: []
+          responseEvent:
+            m_PersistentCalls:
+              m_Calls: []
         dialogueEvent:
           m_PersistentCalls:
             m_Calls: []
+      responseEvent:
+        m_PersistentCalls:
+          m_Calls: []
     - responseText: 
       nextNode:
         DialogueText: []
@@ -55,6 +65,9 @@ MonoBehaviour:
         dialogueEvent:
           m_PersistentCalls:
             m_Calls: []
+      responseEvent:
+        m_PersistentCalls:
+          m_Calls: []
     - responseText: Leave
       nextNode:
         DialogueText:
@@ -63,6 +76,9 @@ MonoBehaviour:
         dialogueEvent:
           m_PersistentCalls:
             m_Calls: []
+      responseEvent:
+        m_PersistentCalls:
+          m_Calls: []
     dialogueEvent:
       m_PersistentCalls:
         m_Calls:
