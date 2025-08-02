@@ -20,8 +20,10 @@ public class Interaction : MonoBehaviour
             switch (collidingObj.tag)
             {
                 case "NPC":
-                    actionNotifier.JapMaster?.Invoke();
-                    ActivateInteractionText(true, "Space to interact with NPC");
+                    NPC _npc = collidingObj.GetComponent<NPC>();
+                    actionNotifier.NpcInteract?.Invoke(_npc.dialogue, _npc.npcType.ToString());
+                    _npc.Interacted();
+                    ActivateInteractionText(true, $"Space to interact with {_npc.npcType.ToString()}");
                     break;
                 case "SymbolPuzzle":
                     actionNotifier.Puzzle?.Invoke(Enums.Puzzles.SymbolPuzzle);
@@ -46,7 +48,8 @@ public class Interaction : MonoBehaviour
         switch (other.tag)
         {
             case "NPC":
-                ActivateInteractionText(true, "Space to interact with NPC");
+                NPC _npc = other.GetComponent<NPC>();
+                ActivateInteractionText(true, $"Space to interact with {_npc.npcType.ToString()}");
                 break;
             case "SymbolPuzzle":
                 ActivateInteractionText(true, "Space to interact with Puzzle");

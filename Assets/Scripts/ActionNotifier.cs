@@ -14,7 +14,7 @@ public class ActionNotifier : MonoBehaviour
     }
     #endregion
 
-    public Action JapMaster;
+    public Action<Dialogue, string> NpcInteract;
     public Action<Enums.Items> Item;
     public Action<Enums.Puzzles> Puzzle;
     public Action<WorldColor> WorldColor;

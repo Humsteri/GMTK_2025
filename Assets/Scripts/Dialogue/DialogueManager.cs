@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     int currentDialogueIndex = 0;
     int currentResponseIndex = 0;
     [SerializeField] GameObject dialogueCanvas;
+    [SerializeField] TextMeshProUGUI dialogueCanvasTitle;
     [SerializeField] Transform dialogueSpawnTransform;
     [SerializeField] Transform dialogueResponseSpawnTransform;
     [SerializeField] GameObject npcDialoguePrefab;
@@ -23,21 +24,23 @@ public class DialogueManager : MonoBehaviour
     bool dialogueGoing = false;
     bool skipped = false;
     string actualText = "";
+    string title = "";
     public PauseInfo PauseInfo;
     Coroutine produceTextCoroutine;
     AudioManager audioManager => AudioManager.Instance;
     void Start()
     {
-        ActionNotifier.Instance.JapMaster += InteractedWithNpc;
+        ActionNotifier.Instance.NpcInteract += InteractedWithNpc;
     }
 
     void OnDestroy()
     {
-        ActionNotifier.Instance.JapMaster -= InteractedWithNpc;
+        ActionNotifier.Instance.NpcInteract -= InteractedWithNpc;
     }
-    private void InteractedWithNpc()
+    private void InteractedWithNpc(Dialogue npcdialogueNode, string npcName)
     {
-        StartDialogue(dialogue.RootNode);
+        title = npcName;
+        StartDialogue(npcdialogueNode.RootNode, npcName);
     }
     void Update()
     {
@@ -61,7 +64,7 @@ public class DialogueManager : MonoBehaviour
                 audioManager.PlaySelectedInteraction();
                 ClearOldResponse();
                 currentDialogueIndex = 0;
-                StartDialogue(currentResponseSelected.SelectedResponse());
+                StartDialogue(currentResponseSelected.SelectedResponse(), title);
             }
         }
         if (InputManager.Instance.DialogueDown)
@@ -97,11 +100,12 @@ public class DialogueManager : MonoBehaviour
             audioManager.PlayInteraction();
         }
     }
-    public void StartDialogue(DialogueNode dialogueNode)
+    public void StartDialogue(DialogueNode dialogueNode, string title)
     {
         dialogueGoing = true;
         CanRespond = false;
         dialogueCanvas.SetActive(true);
+        dialogueCanvasTitle.text = title;
         InputManager.Instance.EnableDialogue();
         ClearOldDialogue();
         currentDialogueNode = dialogueNode;
