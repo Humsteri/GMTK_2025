@@ -41,21 +41,21 @@ public class SymbolPuzzle : MonoBehaviour
             ClosePuzzle();
         }
 
-        if (InputManager.Instance.Next) {
+        if (InputManager.Instance.SymbolNext) {
             NextApparatus();
         }
-        if (InputManager.Instance.Previous) {
+        if (InputManager.Instance.SymbolPrevious) {
             PreviousApparatus();
         }
-        if (InputManager.Instance.Forward) {
+        if (InputManager.Instance.SymbolForward) {
             _selectedComponent.Forward();
             GetApparatusSymbolIndex(_selectedComponent);
         }
-        if (InputManager.Instance.Backwards) {
+        if (InputManager.Instance.SymbolBackwards) {
             _selectedComponent.Backward();
             GetApparatusSymbolIndex(_selectedComponent);
         }
-        if (InputManager.Instance.Confirm) {
+        if (InputManager.Instance.SymbolConfirm) {
             if (_apparatusIndex == 3) { // 3 == Buttons
                 if (_ButtonIndex == 0) { // 0 == Confirmation Button
                     SubmitAnswer();

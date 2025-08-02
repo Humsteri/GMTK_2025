@@ -29,11 +29,17 @@ public class InputManager : MonoBehaviour
     public bool DialogueSelect => InputActions.Dialogue.Select?.WasPressedThisFrame() ?? false;
 
     [Header("Symbol Puzzle")]
-    public bool Next => InputActions.SymbolPuzzle.Next?.WasPressedThisFrame() ?? false;
-    public bool Previous => InputActions.SymbolPuzzle.Previous?.WasPressedThisFrame() ?? false;
-    public bool Forward => InputActions.SymbolPuzzle.Forward?.WasPressedThisFrame() ?? false;
-    public bool Backwards => InputActions.SymbolPuzzle.Backwards?.WasPressedThisFrame() ?? false;
-    public bool Confirm => InputActions.SymbolPuzzle.Confirm?.WasPressedThisFrame() ?? false;
+    public bool SymbolNext => InputActions.SymbolPuzzle.Next?.WasPressedThisFrame() ?? false;
+    public bool SymbolPrevious => InputActions.SymbolPuzzle.Previous?.WasPressedThisFrame() ?? false;
+    public bool SymbolForward => InputActions.SymbolPuzzle.Forward?.WasPressedThisFrame() ?? false;
+    public bool SymbolBackwards => InputActions.SymbolPuzzle.Backwards?.WasPressedThisFrame() ?? false;
+    public bool SymbolConfirm => InputActions.SymbolPuzzle.Confirm?.WasPressedThisFrame() ?? false;
+
+    [Header("Color Picker")]
+    public bool ColorNext => InputActions.ColorPicker.Next?.WasPressedThisFrame() ?? false;
+    public bool ColorPrevious => InputActions.ColorPicker.Previous?.WasPressedThisFrame() ?? false;
+    public bool ColorConfirm => InputActions.ColorPicker.Select?.WasPressedThisFrame() ?? false;
+
     void Start()
     {
         InputActions.Player.Enable();
@@ -53,9 +59,17 @@ public class InputManager : MonoBehaviour
         InputActions.Player.Disable();
         InputActions.SymbolPuzzle.Enable();
     }
-
     public void DisableSymbolInputs() {
         InputActions.Player.Enable();
         InputActions.SymbolPuzzle.Disable();
     }
+    public void EnableColorPicker() {
+        InputActions.ColorPicker.Enable();
+        InputActions.Player.Disable();
+    }
+    public void DisableColorPicker() {
+        InputActions.ColorPicker.Disable();
+        InputActions.Player.Enable();
+    }
+
 }

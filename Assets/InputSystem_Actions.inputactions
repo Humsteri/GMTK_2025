@@ -1233,6 +1233,74 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ColorPicker",
+            "id": "20cdd396-11de-4ad1-bb14-82e2822b8f13",
+            "actions": [
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "f5459fcb-3b08-4377-8840-896fd3628f8a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Previous",
+                    "type": "Button",
+                    "id": "3cef5d96-4cb5-4a1c-996b-3d4cbe32c480",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "cfa03c3e-510d-4b26-b60e-0328b140d8c2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "713857ed-0373-43ce-9cd7-8f10f6225ee1",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c185c9be-1fc8-4d5b-a16c-940f0f4988a6",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Previous",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79a06891-1273-4631-b900-a73a4aaf000e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

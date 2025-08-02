@@ -1319,6 +1319,74 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ColorPicker"",
+            ""id"": ""20cdd396-11de-4ad1-bb14-82e2822b8f13"",
+            ""actions"": [
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""f5459fcb-3b08-4377-8840-896fd3628f8a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Previous"",
+                    ""type"": ""Button"",
+                    ""id"": ""3cef5d96-4cb5-4a1c-996b-3d4cbe32c480"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""cfa03c3e-510d-4b26-b60e-0328b140d8c2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""713857ed-0373-43ce-9cd7-8f10f6225ee1"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c185c9be-1fc8-4d5b-a16c-940f0f4988a6"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Previous"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79a06891-1273-4631-b900-a73a4aaf000e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1424,6 +1492,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Dialogue_MoveLeft = m_Dialogue.FindAction("MoveLeft", throwIfNotFound: true);
         m_Dialogue_MoveRight = m_Dialogue.FindAction("MoveRight", throwIfNotFound: true);
         m_Dialogue_MoveDown = m_Dialogue.FindAction("MoveDown", throwIfNotFound: true);
+        // ColorPicker
+        m_ColorPicker = asset.FindActionMap("ColorPicker", throwIfNotFound: true);
+        m_ColorPicker_Next = m_ColorPicker.FindAction("Next", throwIfNotFound: true);
+        m_ColorPicker_Previous = m_ColorPicker.FindAction("Previous", throwIfNotFound: true);
+        m_ColorPicker_Select = m_ColorPicker.FindAction("Select", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1432,6 +1505,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputSystem_Actions.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_SymbolPuzzle.enabled, "This will cause a leak and performance issues, InputSystem_Actions.SymbolPuzzle.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Dialogue.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Dialogue.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_ColorPicker.enabled, "This will cause a leak and performance issues, InputSystem_Actions.ColorPicker.Disable() has not been called.");
     }
 
     /// <summary>
@@ -2195,6 +2269,124 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="DialogueActions" /> instance referencing this action map.
     /// </summary>
     public DialogueActions @Dialogue => new DialogueActions(this);
+
+    // ColorPicker
+    private readonly InputActionMap m_ColorPicker;
+    private List<IColorPickerActions> m_ColorPickerActionsCallbackInterfaces = new List<IColorPickerActions>();
+    private readonly InputAction m_ColorPicker_Next;
+    private readonly InputAction m_ColorPicker_Previous;
+    private readonly InputAction m_ColorPicker_Select;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "ColorPicker".
+    /// </summary>
+    public struct ColorPickerActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public ColorPickerActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "ColorPicker/Next".
+        /// </summary>
+        public InputAction @Next => m_Wrapper.m_ColorPicker_Next;
+        /// <summary>
+        /// Provides access to the underlying input action "ColorPicker/Previous".
+        /// </summary>
+        public InputAction @Previous => m_Wrapper.m_ColorPicker_Previous;
+        /// <summary>
+        /// Provides access to the underlying input action "ColorPicker/Select".
+        /// </summary>
+        public InputAction @Select => m_Wrapper.m_ColorPicker_Select;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_ColorPicker; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="ColorPickerActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(ColorPickerActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="ColorPickerActions" />
+        public void AddCallbacks(IColorPickerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ColorPickerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ColorPickerActionsCallbackInterfaces.Add(instance);
+            @Next.started += instance.OnNext;
+            @Next.performed += instance.OnNext;
+            @Next.canceled += instance.OnNext;
+            @Previous.started += instance.OnPrevious;
+            @Previous.performed += instance.OnPrevious;
+            @Previous.canceled += instance.OnPrevious;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="ColorPickerActions" />
+        private void UnregisterCallbacks(IColorPickerActions instance)
+        {
+            @Next.started -= instance.OnNext;
+            @Next.performed -= instance.OnNext;
+            @Next.canceled -= instance.OnNext;
+            @Previous.started -= instance.OnPrevious;
+            @Previous.performed -= instance.OnPrevious;
+            @Previous.canceled -= instance.OnPrevious;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="ColorPickerActions.UnregisterCallbacks(IColorPickerActions)" />.
+        /// </summary>
+        /// <seealso cref="ColorPickerActions.UnregisterCallbacks(IColorPickerActions)" />
+        public void RemoveCallbacks(IColorPickerActions instance)
+        {
+            if (m_Wrapper.m_ColorPickerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="ColorPickerActions.AddCallbacks(IColorPickerActions)" />
+        /// <seealso cref="ColorPickerActions.RemoveCallbacks(IColorPickerActions)" />
+        /// <seealso cref="ColorPickerActions.UnregisterCallbacks(IColorPickerActions)" />
+        public void SetCallbacks(IColorPickerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ColorPickerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ColorPickerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="ColorPickerActions" /> instance referencing this action map.
+    /// </summary>
+    public ColorPickerActions @ColorPicker => new ColorPickerActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -2515,5 +2707,34 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveDown(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "ColorPicker" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="ColorPickerActions.AddCallbacks(IColorPickerActions)" />
+    /// <seealso cref="ColorPickerActions.RemoveCallbacks(IColorPickerActions)" />
+    public interface IColorPickerActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Next" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNext(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Previous" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPrevious(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Select" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelect(InputAction.CallbackContext context);
     }
 }
