@@ -100,10 +100,10 @@ TextureImporter:
       name: T_LanternStuffs_0
       rect:
         serializedVersion: 2
-        x: 314
-        y: 2754
-        width: 1026
-        height: 1094
+        x: 158
+        y: 1377
+        width: 512
+        height: 546
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,10 +122,10 @@ TextureImporter:
       name: T_LanternStuffs_1
       rect:
         serializedVersion: 2
-        x: 1548
-        y: 2754
-        width: 1026
-        height: 1094
+        x: 774
+        y: 1377
+        width: 513
+        height: 546
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +144,10 @@ TextureImporter:
       name: T_LanternStuffs_2
       rect:
         serializedVersion: 2
-        x: 2784
-        y: 2754
-        width: 1026
-        height: 1094
+        x: 1392
+        y: 1377
+        width: 513
+        height: 546
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
