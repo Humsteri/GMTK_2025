@@ -3861,10 +3861,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: JapMasterNpc
       objectReference: {fileID: 0}
-    - target: {fileID: 7014631233528064311, guid: 516e39ebe48fe27468e47f645120cf9f, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

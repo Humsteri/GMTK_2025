@@ -247,10 +247,10 @@ public class DialogueManager : MonoBehaviour
             //Actualize on screen
             textBody.text = Write(letter);
             PlayTextSound();
-            NokiTalks _nokiTalks = currentNpc.GetComponent<NokiTalks>();
-            if (_nokiTalks != null)
+            NpcTalks _npcTalks = currentNpc.GetComponent<NpcTalks>();
+            if (_npcTalks != null)
             {
-                _nokiTalks.Talk();
+                _npcTalks.Talk();
             }
             //set to go to the Up
             index += 1;
@@ -259,10 +259,10 @@ public class DialogueManager : MonoBehaviour
         else
         {
             AudioManager.Instance.StopSound();
-            NokiTalks _nokiTalks = currentNpc.GetComponent<NokiTalks>();
-            if (_nokiTalks != null)
+            NpcTalks _npcTalks = currentNpc.GetComponent<NpcTalks>();
+            if (_npcTalks != null)
             {
-                _nokiTalks.StopTalk();
+                _npcTalks.StopTalk();
             }
             DialogueGoing = false;
             if (playerDialogueResponses.Count > 0) return;
