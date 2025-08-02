@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -51,14 +50,18 @@ public class WorldColorManager : MonoBehaviour
     }
 
     private void Start() {
-        ActionNotifier.Instance.WorldColor += ChangeWorldColor;
+        ActionNotifier.Instance.WorldColor += ColorChange;
 
-        _volume.TryGet<ColorAdjustments>(out _colorAdjust);
+            _volume.TryGet<ColorAdjustments>(out _colorAdjust);
         if (_colorAdjust == null) {
             Debug.LogError("No ColorAdjustments found on profile");
         }
 
         ChangeWorldColor(WorldColor);
+    }
+
+    void ColorChange(WorldColor color) {
+        WorldColor = color;
     }
 
     void ChangeWorldColor(WorldColor color) {

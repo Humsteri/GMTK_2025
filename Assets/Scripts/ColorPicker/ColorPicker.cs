@@ -15,6 +15,10 @@ public class ColorPicker : MonoBehaviour
     [SerializeField] ColorPickerColor _selectedColor;
     [SerializeField] int _colorIndex = 0;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip _selectClip;
+    [SerializeField] List<AudioClip> _browseClips;
+
     private void Update() {
         if (OpenBool) {
             OpenBool = false;
@@ -31,6 +35,9 @@ public class ColorPicker : MonoBehaviour
             PreviousColor();
         }
         if (InputManager.Instance.ColorConfirm) {
+
+            AudioSource.PlayClipAtPoint(_selectClip, Camera.main.transform.position, 0.5f);
+
             if (_colorIndex == 0) {
                 ActionNotifier.Instance.WorldColor?.Invoke(WorldColor.Red);
             }
@@ -83,5 +90,10 @@ public class ColorPicker : MonoBehaviour
         }
         _colors[index].Select();
         _selectedColor = _colors[index];
+        AudioSource.PlayClipAtPoint(SelectRandomClip(), Camera.main.transform.position, 0.5f);
+    }
+
+    AudioClip SelectRandomClip() {
+        return _browseClips[Random.Range(0, _browseClips.Count)];
     }
 }

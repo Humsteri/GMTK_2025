@@ -732,6 +732,12 @@ MonoBehaviour:
   - {fileID: 1975985197087357630}
   _selectedColor: {fileID: 0}
   _colorIndex: 0
+  _selectClip: {fileID: 8300000, guid: f14764c07dd7f2f4ea832b4eefbde1fd, type: 3}
+  _browseClips:
+  - {fileID: 8300000, guid: a5aceb527a0110e4a8845aa34dd83718, type: 3}
+  - {fileID: 8300000, guid: dd6f551bc13440b4b92ec6284b4ffeed, type: 3}
+  - {fileID: 8300000, guid: 3ee540ac9a1c1304b8ebdf7cc00a3032, type: 3}
+  - {fileID: 8300000, guid: 30abcb00addd12943a880a5dcf4f1792, type: 3}
 --- !u!1 &8614935727516347542
 GameObject:
   m_ObjectHideFlags: 0
