@@ -28,6 +28,7 @@ public class Items : MonoBehaviour
     }
     public void SetItem(Enums.Items item)
     {
+        AudioManager.Instance.PlayPickup(/* GameObject.FindGameObjectWithTag("Player").transform.position */);
         GameObject _item = Instantiate(itemPrefab, itemGrid);
         ItemUi itemUI = _item.GetComponent<ItemUi>();
 

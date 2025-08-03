@@ -20,9 +20,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip turn;
     [SerializeField] AudioClip moveInteract;
     [SerializeField] AudioClip cat;
+    [SerializeField] AudioClip pickup;
     [SerializeField] AudioClip selectedInteraction;
     [SerializeField] float maxPitchChange;
     [SerializeField] float minPitchChange;
+    float volumeNormal = 0.146f;
     public void PlaySound()
     {
         if (!DialogueManager.Instance.DialogueGoing)
@@ -31,6 +33,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
         audioSource.clip = bassSound;
+        audioSource.volume = volumeNormal;
         audioSource.pitch = UnityEngine.Random.Range(minPitchChange, maxPitchChange);
         audioSource.Play();
     }
@@ -43,12 +46,14 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayInteraction()
     {
+        audioSource.volume = volumeNormal;
         audioSource.pitch = 0.07f;
         audioSource.clip = moveInteract;
         audioSource.Play();
     }
     public void PlaySelectedInteraction()
     {
+        audioSource.volume = volumeNormal;
         audioSource.pitch = 0.5f;
         audioSource.clip = selectedInteraction;
         audioSource.Play();
@@ -56,6 +61,14 @@ public class AudioManager : MonoBehaviour
     public void PlayFootStep(Vector3 pos)
     {
         AudioSource.PlayClipAtPoint(footStep, pos, 0.7f);
+    }
+    public void PlayPickup()
+    {
+        audioSource.pitch = 1f;
+        audioSource.volume = 0.6f;
+        audioSource.clip = pickup;
+        audioSource.Play();
+       // AudioSource.PlayClipAtPoint(pickup, pos, 0.7f);
     }
     public void PlayCatSound(Vector3 pos)
     {
