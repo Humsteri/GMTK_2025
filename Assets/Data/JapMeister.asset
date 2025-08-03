@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RootNode:
     DialogueText:
-    - Sup bozo
+    - Meow
     - I am the mighty japper
     Responses:
     - responseText: Attack
       nextNode:
         DialogueText:
-        - Why would you do that?
+        - You are out of your league
         Responses: []
         dialogueEvent:
           m_PersistentCalls:
@@ -31,13 +31,11 @@ MonoBehaviour:
     - responseText: Talk
       nextNode:
         DialogueText:
-        - ...
+        - Do you want to hear a tail?
         Responses:
-        - responseText: Why are you here?
+        - responseText: 
           nextNode:
-            DialogueText:
-            - I was trapped here by the minotaur
-            - I can't even remember how long ago it was
+            DialogueText: []
             Responses: []
             dialogueEvent:
               m_PersistentCalls:
@@ -45,11 +43,24 @@ MonoBehaviour:
           responseEvent:
             m_PersistentCalls:
               m_Calls: []
-        - responseText: Nice cat
+        - responseText: How did you two came to be here?
           nextNode:
             DialogueText:
-            - Meow
-            Responses: []
+            - I pitied this one eyed mortal
+            - Ah that reminds me of this one monster...
+            - It was a stormy night...
+            Responses:
+            - responseText: '*Sneak away*'
+              nextNode:
+                DialogueText:
+                - Hey, where are you going?
+                Responses: []
+                dialogueEvent:
+                  m_PersistentCalls:
+                    m_Calls: []
+              responseEvent:
+                m_PersistentCalls:
+                  m_Calls: []
             dialogueEvent:
               m_PersistentCalls:
                 m_Calls: []

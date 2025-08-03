@@ -22,7 +22,7 @@ MonoBehaviour:
         - '*You exit the dungeon leaving its coldness behind*'
         - '*As you exit the door, you stop to listen for one last time*'
         - '*...*'
-        - '*You hear faint scratching on the door*'
+        - '*You hear small tippy taps behind you*'
         Responses: []
         dialogueEvent:
           m_PersistentCalls:

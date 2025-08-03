@@ -35,8 +35,9 @@ MonoBehaviour:
         - responseText: Who was your wife?
           nextNode:
             DialogueText:
-            - 
-            - 
+            - She was so beautiful...
+            - Shame the world couldn't see her beauty
+            - Only I wasn't petrified by her gaze
             Responses: []
             dialogueEvent:
               m_PersistentCalls:
@@ -44,7 +45,7 @@ MonoBehaviour:
           responseEvent:
             m_PersistentCalls:
               m_Calls: []
-        - responseText: I really don't care
+        - responseText: '*Leave*'
           nextNode:
             DialogueText:
             - Die

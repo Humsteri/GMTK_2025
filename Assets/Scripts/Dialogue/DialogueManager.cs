@@ -71,6 +71,8 @@ public class DialogueManager : MonoBehaviour
             {
                 skipped = true;
                 DialogueGoing = false;
+                string _response = ColorizeWords(currentDialogueNode.DialogueText[currentDialogueIndex - 1]);
+                npcDialogueText.text = _response;
                 MoveNextInDialogue();
                 return;
             }
@@ -127,6 +129,7 @@ public class DialogueManager : MonoBehaviour
         dialogueLength = currentDialogueNode.DialogueText.Count;
         npcDialogueText.text = currentDialogueNode.DialogueText[currentDialogueIndex];
         int index = 0;
+        
         ReproduceText(currentDialogueNode.DialogueText[currentDialogueIndex], index, currentDialogueNode, npcDialogueText);
         currentDialogueIndex += 1;
     }
@@ -256,6 +259,21 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(PauseInfo.textPause);
         AudioManager.Instance.PlaySound();
     }
+    private string ColorizeWords(string input)
+    {
+        Dictionary<string, string> colorMap = new Dictionary<string, string>
+        {
+            { "petrified", "#00ff55ff" },
+            { "one eyed", "#00ff55ff" },
+        };
+
+        foreach (var pair in colorMap)
+        {
+            input = input.Replace(pair.Key, $"<color={pair.Value}>{pair.Key}</color>");
+        }
+
+        return input;
+    }
     private void ReproduceText(string response, int index, DialogueNode node, TextMeshProUGUI textBody)
     {
 
@@ -264,19 +282,7 @@ public class DialogueManager : MonoBehaviour
             //get one letter
 
             char letter = response[index];
-            /* if (letter == '<')
-            {
-                int tagEndIndex = response.IndexOf('>', index);
-                if (tagEndIndex != -1)
-                {
-                    // Grab the whole tag and add it instantly
-                    string fullTag = response.Substring(index, tagEndIndex - index + 1);
-                    textBody.text += fullTag;
 
-                    index = tagEndIndex + 1; // Skip past the tag
-                    return;
-                }
-            } */
             //Actualize on screen
             textBody.text = Write(letter);
             PlayTextSound();
@@ -291,6 +297,10 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            // colorization
+            string _response = ColorizeWords(currentDialogueNode.DialogueText[currentDialogueIndex - 1]);
+            textBody.text = _response;
+
             AudioManager.Instance.StopSound();
             NpcTalks _npcTalks = currentNpc.GetComponent<NpcTalks>();
             if (_npcTalks != null)
@@ -320,6 +330,10 @@ public class DialogueManager : MonoBehaviour
     {
         switch (letter)
         {
+            case '<':
+                yield return new WaitForSeconds(0);
+                ReproduceText(response, index, node, textBody);
+                yield break;
             case '.':
                 yield return new WaitForSeconds(PauseInfo.dotPause);
                 ReproduceText(response, index, node, textBody);
@@ -395,6 +409,8 @@ public class DialogueManager : MonoBehaviour
     public void ExitGame()
     {
         print("Exit game func");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        AudioManager.Instance.PlayCatSound(player.transform.position);
         if (creditScene == null)
         {
             creditScene = GameObject.FindGameObjectWithTag("Credits");
