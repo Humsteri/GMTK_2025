@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class InputManager : MonoBehaviour
     public bool A => InputActions.Player.A?.WasPressedThisFrame() ?? false;
     public bool D => InputActions.Player.D?.WasPressedThisFrame() ?? false;
     public bool Interact => InputActions.Player.Interact?.WasPressedThisFrame() ?? false;
+    public bool Esc => InputActions.Tutorial.Esc?.WasPressedThisFrame() ?? false;
+    public bool TutorialInteraction => InputActions.Tutorial.Interact?.WasPressedThisFrame() ?? false;
 
     [Header("Dialogue")]
     public bool DialogueUp => InputActions.Dialogue.MoveUp?.WasPressedThisFrame() ?? false;
@@ -39,10 +42,34 @@ public class InputManager : MonoBehaviour
     public bool ColorNext => InputActions.ColorPicker.Next?.WasPressedThisFrame() ?? false;
     public bool ColorPrevious => InputActions.ColorPicker.Previous?.WasPressedThisFrame() ?? false;
     public bool ColorConfirm => InputActions.ColorPicker.Select?.WasPressedThisFrame() ?? false;
-
+    InputActionMap activeMap;
     void Start()
     {
         InputActions.Player.Enable();
+        InputActions.Tutorial.Enable();
+    }
+    public void EnableTutorialPrompt()
+    {
+        if (InputActions.Player.enabled)
+        {
+            activeMap = InputActions.Player;
+        }
+        if (InputActions.Dialogue.enabled)
+        {
+            activeMap = InputActions.Dialogue;
+        }
+        if (InputActions.SymbolPuzzle.enabled)
+        {
+            activeMap = InputActions.SymbolPuzzle;
+        }
+        InputActions.Player.Disable();
+        InputActions.Dialogue.Disable();
+        InputActions.SymbolPuzzle.Disable();
+        
+    }
+    public void DisableTutorialPrompt()
+    {
+        activeMap.Enable();
     }
     public void EnableDialogue()
     {
