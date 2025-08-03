@@ -61,7 +61,7 @@ MonoBehaviour:
           nextNode:
             DialogueText:
             - The Minotaur guards the exit
-            - On top of this, only the right lantern color lights the way
+            - On top of this, only the right lantern lights the way
             Responses: []
             dialogueEvent:
               m_PersistentCalls:
