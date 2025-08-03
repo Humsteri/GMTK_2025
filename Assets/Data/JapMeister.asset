@@ -15,7 +15,7 @@ MonoBehaviour:
   RootNode:
     DialogueText:
     - Meow
-    - I am the mighty japper
+    - I am the mighty Noki
     Responses:
     - responseText: Attack
       nextNode:

@@ -9,7 +9,7 @@ public class NPC : MonoBehaviour
     bool hasBeenInteractedWith = false;
     public enum NpcType
     {
-        JapMeister,
+        Noki,
         Minotaur,
         Door
     }
