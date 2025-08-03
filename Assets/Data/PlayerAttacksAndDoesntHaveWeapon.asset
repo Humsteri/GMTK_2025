@@ -16,7 +16,7 @@ MonoBehaviour:
     DialogueText:
     - '*You attack the minotaur*'
     - '*...*'
-    - '*You realize the mistake you just did*'
+    - '*You realize the mistake you just made*'
     - You will wail for that!
     Responses: []
     dialogueEvent:
