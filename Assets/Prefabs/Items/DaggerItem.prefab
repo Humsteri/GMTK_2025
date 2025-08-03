@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9160763823036630688}
   - component: {fileID: 1748468045308351408}
   - component: {fileID: 1655835873009847693}
+  - component: {fileID: 4969843113216048794}
   m_Layer: 6
   m_Name: DaggerItem
   m_TagString: Dagger
@@ -136,3 +137,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4969843113216048794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960021879201219353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e92bfdfa70784f920d4f09cae0a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Smooth: 1
