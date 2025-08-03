@@ -28,7 +28,6 @@ public class OpenableDoor : MonoBehaviour
         AudioSource.PlayClipAtPoint(_clip, transform.position);
         _isOpen = false;
     }
-
     protected virtual void OnDestroy() {
 
     }

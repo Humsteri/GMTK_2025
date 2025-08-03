@@ -32,7 +32,7 @@ public class Interaction : MonoBehaviour
             {
                 case "NPC":
                     NPC _npc = collidingObj.GetComponent<NPC>();
-                    actionNotifier.NpcInteract?.Invoke(_npc.dialogue, _npc,_npc.npcType.ToString());
+                    actionNotifier.NpcInteract?.Invoke(_npc.dialogue, _npc, _npc.npcType.ToString());
                     _npc.Interacted();
                     break;
                 case "SymbolPuzzle":
@@ -55,6 +55,10 @@ public class Interaction : MonoBehaviour
                     break;
             }
         }
+        else if (collidingObj == null)
+        {
+            ActivateInteractionText(false, "");
+        }
     }
     void ActivateInteractionText(bool enable, string txt)
     {
@@ -75,8 +79,14 @@ public class Interaction : MonoBehaviour
             case "Key1":
                 ActivateInteractionText(true, "Space to interact with Key");
                 break;
+            case "Dagger":
+                ActivateInteractionText(true, "Space to interact with Dagger");
+                break;
             case "ColorChange":
                 ActivateInteractionText(true, "Space to interact with lanterns");
+                break;
+            case "LockedDoor":
+                ActivateInteractionText(true, "Space to interact with door");
                 break;
             default:
                 break;

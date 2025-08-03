@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         teleporting = true;
         targetGridPos = Vector3Int.RoundToInt(pos);
+        
         teleporting = false;
     }  
     void FixedUpdate()

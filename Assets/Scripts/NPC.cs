@@ -10,7 +10,8 @@ public class NPC : MonoBehaviour
     public enum NpcType
     {
         JapMeister,
-        Minotaur
+        Minotaur,
+        Door
     }
     public void Interacted()
     {

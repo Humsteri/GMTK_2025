@@ -10,21 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: beddd93cda7e9b34ea141259353d225b, type: 3}
-  m_Name: PlayerAttacksAndDoesntHaveWeapon
+  m_Name: PlayerHasKey
   m_EditorClassIdentifier: 
   RootNode:
     DialogueText:
-    - '*You attack the minotaur*'
-    - '*...*'
-    - '*You realize the mistake you just did*'
-    - You will wail for that!
+    - '*You use the key to open the door*'
     Responses: []
     dialogueEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 4920843769272894848, guid: 4c3bcf8881f3ab246827c705049c0723, type: 3}
           m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-          m_MethodName: PlayerDies
+          m_MethodName: DoorOpens
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

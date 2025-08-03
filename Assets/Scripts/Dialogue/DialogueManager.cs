@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class DialogueManager : MonoBehaviour
     #endregion
     [SerializeField] Dialogue playerAttackedAndHasWeapon;
     [SerializeField] Dialogue playerAttackedAndDoesntHaveWeapon;
+    [SerializeField] Dialogue playerOpensDoorAndHasKey;
+    [SerializeField] Dialogue playerOpensDoorAndDoesntHaveKey;
     int dialogueLength = 0;
     int currentDialogueIndex = 0;
     int currentResponseIndex = 0;
@@ -31,6 +35,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] List<PlayerDialogueResponse> playerDialogueResponses = new();
     [SerializeField] PlayerDialogueResponse currentResponseSelected;
     [SerializeField] DialogueNode currentDialogueNode;
+    [SerializeField] GameObject deathScreenObj;
+    [SerializeField] GameObject creditScene;
     public bool ResponseSpawned = false;
     public bool CanRespond = false;
     [HideInInspector] public bool DialogueGoing = false;
@@ -179,6 +185,20 @@ public class DialogueManager : MonoBehaviour
                 StartDialogue(playerAttackedAndDoesntHaveWeapon.RootNode, title);
             }
         }
+        if (currentResponseSelected.GetResponseText() == "Open" && currentResponseSelected.SelectedResponse().DialogueText.Count == 0)
+        {
+            audioManager.PlaySelectedInteraction();
+            ClearOldResponse();
+            currentDialogueIndex = 0;
+            if (Items.Instance.HasKey)
+            {
+                StartDialogue(playerOpensDoorAndHasKey.RootNode, title);
+            }
+            else
+            {
+                StartDialogue(playerOpensDoorAndDoesntHaveKey.RootNode, title);
+            }
+        }
     }
     IEnumerator CanSelectResponse()
     {
@@ -261,7 +281,7 @@ public class DialogueManager : MonoBehaviour
             textBody.text = Write(letter);
             PlayTextSound();
             NpcTalks _npcTalks = currentNpc.GetComponent<NpcTalks>();
-            if (_npcTalks != null)
+            if (_npcTalks != null && !textBody.text.Contains("*"))
             {
                 _npcTalks.Talk();
             }
@@ -282,6 +302,7 @@ public class DialogueManager : MonoBehaviour
 
             if (currentDialogueIndex >= dialogueLength && !currentDialogueNode.IsLastNode() && currentDialogueNode.Responses.Count > 0)
             {
+                currentDialogueNode.dialogueEventSetter?.Invoke();
                 foreach (var responseNode in currentDialogueNode.Responses)
                 {
                     playerDialogueResponses.Add(SpawnResponses().SetText(responseNode));
@@ -323,10 +344,62 @@ public class DialogueManager : MonoBehaviour
     {
         print("Got to event");
     }
-    public void PlayerDies()
+    public async void PlayerDies()
     {
+        if (deathScreenObj == null)
+        {
+            deathScreenObj = GameObject.FindGameObjectWithTag("DeathScreen");
+        }
+        print($"Here 2 {deathScreenObj}");
+        Animator _deathAnimator = deathScreenObj.GetComponent<Animator>();
+        _deathAnimator.Play("DeathScreenFadeIn", -1, 0);
+        // Wait here 2 seconds
+        await Task.Delay(1000); // Wait 2000ms = 2 seconds
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<PlayerMovement>().TeleportPlayer(new Vector3(0, 1, 5));
+    }
+    public void MinotaurDies()
+    {
+        foreach (var item in GameObject.FindGameObjectsWithTag("NPC"))
+        {
+            if (item.name == "MinotaurNpc")
+            {
+                Destroy(item);
+            }
+        }
+    }
+    public void DoorOpens()
+    {
+        foreach (var item in GameObject.FindGameObjectsWithTag("NPC"))
+        {
+            if (item.name == "LockedDoor")
+            {
+                LockedDoor _lockedDoor = item.GetComponent<LockedDoor>();
+                _lockedDoor.OpenLockedDoor();
+            }
+        }
+    }
+    public void ExitDoorOpens()
+    {
+        foreach (var item in GameObject.FindGameObjectsWithTag("NPC"))
+        {
+            print($"{item}");
+            if (item.name == "ExitDoor")
+            {
+                print("Found exit door");
+                LockedDoor _lockedDoor = item.GetComponent<LockedDoor>();
+                _lockedDoor.OpenLockedDoor();
+            }
+        }
+    }
+    public void ExitGame()
+    {
+        print("Exit game func");
+        if (creditScene == null)
+        {
+            creditScene = GameObject.FindGameObjectWithTag("Credits");
+        }
+        creditScene.GetComponent<Animator>().Play("CreditsFadeIn", -1, 0);
     }
     #endregion
 }

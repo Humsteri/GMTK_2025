@@ -9,6 +9,9 @@ TagManager:
   - Key1
   - ColorChange
   - Dagger
+  - DeathScreen
+  - LockedDoor
+  - Credits
   layers:
   - Default
   - TransparentFX

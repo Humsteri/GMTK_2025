@@ -38,6 +38,9 @@ public class Items : MonoBehaviour
             case Enums.Items.Key1:
                 HasKey = true;
                 break;
+            case Enums.Items.Dagger:
+                HasWeapon = true;
+                break;
             default:
                 break;
         }
