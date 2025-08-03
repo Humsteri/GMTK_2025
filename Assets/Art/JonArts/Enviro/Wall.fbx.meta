@@ -9,6 +9,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: EnvironmentSet01
     second: {fileID: 2100000, guid: 67e097ba41d8cd445ba9632cfbfc1cb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TileableWall
+    second: {fileID: 2100000, guid: 410cd988ddc1ff240a9b811ebe75784e, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: T_TileableWall
+    second: {fileID: 2800000, guid: 718641687b545a346870c8d06be45e55, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
