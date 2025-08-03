@@ -33,17 +33,7 @@ MonoBehaviour:
         DialogueText:
         - Do you want to hear a tail?
         Responses:
-        - responseText: 
-          nextNode:
-            DialogueText: []
-            Responses: []
-            dialogueEvent:
-              m_PersistentCalls:
-                m_Calls: []
-          responseEvent:
-            m_PersistentCalls:
-              m_Calls: []
-        - responseText: How did you two came to be here?
+        - responseText: How did you two come to be here?
           nextNode:
             DialogueText:
             - I pitied this one eyed mortal
@@ -61,6 +51,18 @@ MonoBehaviour:
               responseEvent:
                 m_PersistentCalls:
                   m_Calls: []
+            dialogueEvent:
+              m_PersistentCalls:
+                m_Calls: []
+          responseEvent:
+            m_PersistentCalls:
+              m_Calls: []
+        - responseText: How do I get out of here?
+          nextNode:
+            DialogueText:
+            - The Minotaur guards the exit
+            - On top of this, only the right lantern color lights the way
+            Responses: []
             dialogueEvent:
               m_PersistentCalls:
                 m_Calls: []

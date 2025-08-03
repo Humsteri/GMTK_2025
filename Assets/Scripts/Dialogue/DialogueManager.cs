@@ -39,6 +39,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject creditScene;
     public bool ResponseSpawned = false;
     public bool CanRespond = false;
+    public bool EndOfGame = false;
     [HideInInspector] public bool DialogueGoing = false;
     bool skipped = false;
     string actualText = "";
@@ -65,6 +66,12 @@ public class DialogueManager : MonoBehaviour
     }
     void Update()
     {
+        if ((InputManager.Instance.Interact || InputManager.Instance.Esc) && EndOfGame == true)
+        {
+            print("123");
+            Application.Quit();
+            return;
+        }
         if (InputManager.Instance.DialogueSelect)
         {
             if (DialogueGoing && !skipped && currentDialogueIndex != currentDialogueNode.DialogueText.Count)
@@ -416,6 +423,9 @@ public class DialogueManager : MonoBehaviour
             creditScene = GameObject.FindGameObjectWithTag("Credits");
         }
         creditScene.GetComponent<Animator>().Play("CreditsFadeIn", -1, 0);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        EndOfGame = true;
     }
     #endregion
 }
