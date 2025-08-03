@@ -74,7 +74,7 @@ public class Interaction : MonoBehaviour
                 ActivateInteractionText(true, $"Space to interact with {_npc.npcType.ToString()}");
                 break;
             case "SymbolPuzzle":
-                ActivateInteractionText(true, "Space to interact with Puzzle");
+                ActivateInteractionText(true, "Space to interact with Apparatus");
                 break;
             case "Key1":
                 ActivateInteractionText(true, "Space to interact with Key");
